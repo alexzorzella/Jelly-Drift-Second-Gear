@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Car : MonoBehaviour, StartListener {
@@ -68,6 +68,11 @@ public class Car : MonoBehaviour, StartListener {
 
         if (!isCpu) {
             gameObject.AddComponent<PlayerInput>().Initialize(this);
+        }
+        else {
+            Camera.main.gameObject.SetActive(false);
+            Destroy(transform.Find("XR Interaction Manager"));
+            Destroy(transform.Find("XR Origin (VR)"));
         }
         
         // Materials are set here
