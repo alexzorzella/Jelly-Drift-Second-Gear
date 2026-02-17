@@ -29,7 +29,7 @@ public class Leaderboard : MonoBehaviour {
     
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
-        PromptInput();
+        DisableInput();
         RecordUtil.Read();
         Refresh();
         UpdateCharCounterText("");
@@ -194,17 +194,23 @@ public class Leaderboard : MonoBehaviour {
         PromptInput();
     }
 
-    public void DisplaySystemMessage(string message) {
+    void DisplaySystemMessage(string message) {
         systemMessageText.text = message;
         
         LeanTween.cancel(systemMessageText.gameObject);
         
         Color color = systemMessageText.color;
         
-        systemMessageText.color = new Color(color.r, color.g, color.b, 1);
+        systemMessageText.color = new Color(color.r, color.g, color.b, 0);
         
-        LeanTween.delayedCall(2F, () => {
-             LeanTween.value(systemMessageText.gameObject, 1, 0, 0.5F).setOnUpdate((alpha) => { systemMessageText.color = new Color(color.r, color.g, color.b, alpha); });
+        LeanTween.value(systemMessageText.gameObject, 0, 1, 0.2F).setOnUpdate((alpha) => {
+            systemMessageText.color = new Color(color.r, color.g, color.b, alpha);
+        });
+        
+        LeanTween.delayedCall(systemMessageText.gameObject, 4F, () => {
+             LeanTween.value(systemMessageText.gameObject, 1, 0, 0.75F).setOnUpdate((alpha) => {
+                 systemMessageText.color = new Color(color.r, color.g, color.b, alpha);
+             }).setEase(LeanTweenType.easeOutExpo);
         });
     }
 
