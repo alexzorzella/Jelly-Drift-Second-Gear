@@ -104,9 +104,9 @@ public class Car : MonoBehaviour {
 
         carCollider = GetComponentInChildren<Collider>();
 
-        accelerationSource = MultiAudioSource.FromResource(gameObject, carData.GetAccelerateSoundName(), loop: true, spatialBlend: 1);
-        decelerationSource = MultiAudioSource.FromResource(gameObject, carData.GetDecelerateSoundName(), loop: true, spatialBlend: 1);
-        horn = MultiAudioSource.FromResource(gameObject, "car_horn", loop: true, spatialBlend: 1);
+        accelerationSource = MultiAudioSource.FromResource(gameObject, carData.GetAccelerateSoundName(), loop: true, spatialBlend: 1, minDistance: 5, maxDistance: 15);
+        decelerationSource = MultiAudioSource.FromResource(gameObject, carData.GetDecelerateSoundName(), loop: true, spatialBlend: 1, minDistance: 5, maxDistance: 15);
+        horn = MultiAudioSource.FromResource(gameObject, "car_horn", loop: true, spatialBlend: 1, minDistance: 5, maxDistance: 15);
         
         accelerationSource.SetVolume(0);
         decelerationSource.SetVolume(0);
