@@ -47,16 +47,24 @@ public class Leaderboard : MonoBehaviour {
         }
         
         records.Sort((x, y) => x.GetTimeMs().CompareTo(y.GetTimeMs()));
-        
+
+        int count = 0;
         foreach (Record record in records) {
             GameObject timeEntry = ResourceLoader.InstantiateObject("TimeEntry");
             timeEntry.GetComponent<TimeEntry>().Initialize(record);
             timeEntry.transform.SetParent(entryParent);
+            timeEntry.transform.localScale = Vector2.one;
             
             height += timeEntry.GetComponent<RectTransform>().rect.height;
             height += verticalLayoutGroup.spacing;
             
             timeEntryPool.Add(timeEntry);
+
+            count++;
+
+            if (count >= 5) {
+                break;
+            }
         }
         
         entryParent.sizeDelta = new Vector2(entryParent.sizeDelta.x, height);
