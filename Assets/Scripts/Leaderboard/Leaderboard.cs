@@ -19,8 +19,6 @@ public class Leaderboard : MonoBehaviour {
 
     int timeMs = -1;
 
-    ProfanityFilter.ProfanityFilter filter = new();
-    
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
         EnableInput();
@@ -80,31 +78,6 @@ public class Leaderboard : MonoBehaviour {
         
         string username = usernameInput.text;
         string message = messageInput.text;
-
-        var usernameProfanities = filter.DetectAllProfanities(username);
-        var messageProfanities = filter.DetectAllProfanities(message);
-        
-        if (usernameProfanities.Count > 0 ||
-            messageProfanities.Count > 0) {
-            // string debug = "Flagged.\n";
-            //
-            // foreach (var word in usernameProfanities) {
-            //     debug += $"{word}\n";
-            // }
-            //
-            // foreach (var word in messageProfanities) {
-            //     debug += $"{word}\n";
-            // }
-            //
-            // Debug.Log(debug);
-            
-            return;
-        }
-        // else {
-        //     Debug.Log("Allowed");
-        // }
-
-        // return;
 
         usernameInput.text = "";
         messageInput.text = "";
