@@ -29,7 +29,7 @@ public class MapCycle : ItemCycle {
 
         UpdateUI();
         max = MapManager.i.MapCount();
-        CarDisplay.Instance.Hide();
+        // CarDisplay.Instance.Hide();
     }
 
     void Update() {
@@ -46,7 +46,7 @@ public class MapCycle : ItemCycle {
             return;
         }
 
-        CarDisplay.Instance.Hide();
+        // CarDisplay.Instance.Hide();
         selected = SaveManager.i.state.lastMap;
         UpdateUI();
     }

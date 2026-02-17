@@ -23,10 +23,8 @@ public class GameController : MonoBehaviour {
         startPos = checkPoints.GetChild(0);
         Invoke("StartRace", startTime);
 
-        currentCar = ResourceLoader.InstantiateObject("Car", startPos.position, startPos.rotation);
+        currentCar = ResourceLoader.InstantiateObject("Car", startPos.position - startPos.right * 2F, startPos.rotation);
         currentCar.GetComponent<Car>().Initialize(CarCatalogue.GetSelectedCarData());
-        
-        // currentCar.GetComponent<CarSkin>().SetSkin(GameState.Instance.skin);
 
         InitializeMenuInput();
     }
