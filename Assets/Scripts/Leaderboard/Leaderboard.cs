@@ -4,7 +4,6 @@ using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using ProfanityFilter;
 using UnityEngine.InputSystem;
 
 public class Leaderboard : MonoBehaviour {
@@ -20,14 +19,17 @@ public class Leaderboard : MonoBehaviour {
     
     readonly List<GameObject> timeEntryPool = new();
 
+    bool awaitingSubmission = false;
     int timeMs = -1;
 
     const int usernameCharLimit = 16;
     const int messageCharLimit = 180;
+
+    public TextMeshProUGUI systemMessageText;
     
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
-        DisableInput();
+        PromptInput();
         RecordUtil.Read();
         Refresh();
         UpdateCharCounterText("");
@@ -35,7 +37,7 @@ public class Leaderboard : MonoBehaviour {
 
     void Update() {
         if (Keyboard.current.enterKey.wasPressedThisFrame) {
-            SubmitNewTime();
+            // SubmitNewTime();
         } else if (Keyboard.current.tabKey.wasPressedThisFrame) {
             if (usernameInput.isFocused) {
                 messageInput.Select();
@@ -101,13 +103,20 @@ public class Leaderboard : MonoBehaviour {
 
     public void SubmitNewTime() {
         if (timeMs <= 0) {
+            DisplaySystemMessage("Your time is impossible.");
             return;
         }
         
         string username = usernameInput.text;
         string message = messageInput.text;
 
-        if (username == "" || message == "") {
+        if (username == "") {
+            DisplaySystemMessage("You haven't entered a display name.");
+            return;
+        }
+        
+        if(message == "") {
+            DisplaySystemMessage("You haven't entered a message.");
             return;
         }
             
@@ -165,13 +174,15 @@ public class Leaderboard : MonoBehaviour {
         }
     }
     
-    void EnableInput() {
+    void PromptInput() {
+        awaitingSubmission = true;
         usernameInput.gameObject.SetActive(true);
         messageInput.gameObject.SetActive(true);
         submitButton.SetActive(true);
     }
     
     void DisableInput() {
+        awaitingSubmission = false;
         usernameInput.gameObject.SetActive(false);
         messageInput.gameObject.SetActive(false);
         submitButton.SetActive(false);
@@ -180,6 +191,28 @@ public class Leaderboard : MonoBehaviour {
     public void ClockTime() {
         timeMs = Timer.Instance.GetMilliseconds();
         timeText.text = TimeEntry.FormatMs(timeMs);
-        EnableInput();
+        PromptInput();
+    }
+
+    public void DisplaySystemMessage(string message) {
+        systemMessageText.text = message;
+        
+        LeanTween.cancel(systemMessageText.gameObject);
+        
+        Color color = systemMessageText.color;
+        
+        systemMessageText.color = new Color(color.r, color.g, color.b, 1);
+        
+        LeanTween.delayedCall(2F, () => {
+             LeanTween.value(systemMessageText.gameObject, 1, 0, 0.5F).setOnUpdate((alpha) => { systemMessageText.color = new Color(color.r, color.g, color.b, alpha); });
+        });
+    }
+
+    public bool AwaitingSubmission() {
+        if (awaitingSubmission) {
+            DisplaySystemMessage("Submit a display name and message!");
+        }
+        
+        return awaitingSubmission;
     }
 }

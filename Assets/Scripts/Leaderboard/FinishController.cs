@@ -40,11 +40,19 @@ public class FinishController : MonoBehaviour {
     }
 
     public void Restart() {
+        if (leaderboard.AwaitingSubmission()) {
+            return;
+        }
+        
         GameController.Instance.RestartGame();
         Time.timeScale = 1f;
     }
 
     public void Menu() {
+        if (leaderboard.AwaitingSubmission()) {
+            return;
+        }
+        
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;
     }
