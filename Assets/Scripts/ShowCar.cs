@@ -13,6 +13,6 @@ public class ShowCar : MonoBehaviour {
             return;
         }
 
-        CarDisplay.Instance.Hide();
+        // CarDisplay.Instance.Hide();
     }
 }
