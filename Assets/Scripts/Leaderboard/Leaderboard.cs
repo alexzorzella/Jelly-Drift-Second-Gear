@@ -87,7 +87,6 @@ public class Leaderboard : MonoBehaviour {
             }
 
             if (count == 0) {
-                Debug.Log(record.GetMessage());
                 championMessageText.text = record.GetMessage();
                 championMessageText.ForceMeshUpdate();
                 championMessageBgRect.sizeDelta = championMessageText.GetRenderedValues() + Vector2.one * 25F;
