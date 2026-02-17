@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,17 +14,22 @@ public class Leaderboard : MonoBehaviour {
     
     public TMP_InputField usernameInput;
     public TMP_InputField messageInput;
+    public TextMeshProUGUI charCounterText;
     public GameObject submitButton;
     
     readonly List<GameObject> timeEntryPool = new();
 
     int timeMs = -1;
 
+    const int usernameCharLimit = 16;
+    const int messageCharLimit = 180;
+    
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
         EnableInput();
         RecordUtil.Read();
         Refresh();
+        UpdateCharCounterText("");
     }
 
     void Refresh() {
@@ -86,6 +92,18 @@ public class Leaderboard : MonoBehaviour {
         string username = usernameInput.text;
         string message = messageInput.text;
 
+        if (username == "" || message == "") {
+            return;
+        }
+            
+        if (username.Length > 16) {
+            username = username.Substring(0, usernameCharLimit);
+        }
+
+        if (message.Length > 255) {
+            message = message.Substring(0, messageCharLimit);
+        }
+        
         usernameInput.text = "";
         messageInput.text = "";
         
@@ -107,6 +125,31 @@ public class Leaderboard : MonoBehaviour {
         Refresh();
     }
 
+    public void ConcatName(string newName) {
+        if (newName.Length > usernameCharLimit) {
+            newName = newName.Substring(0, usernameCharLimit);
+            usernameInput.text = newName;
+        }
+    }
+    
+    public void ConcatMessage(string newMessage) {
+        if (newMessage.Length > messageCharLimit) {
+            newMessage = newMessage.Substring(0, messageCharLimit);
+            messageInput.text = newMessage;
+        }
+    }
+
+    public void UpdateCharCounterText(string message) {
+        int charCount = message.Length;
+        charCounterText.text = $"{charCount}/{messageCharLimit}";
+
+        if (charCount > messageCharLimit) {
+            charCounterText.color = Color.red;
+        } else {
+            charCounterText.color = Color.grey;
+        }
+    }
+    
     void EnableInput() {
         usernameInput.gameObject.SetActive(true);
         messageInput.gameObject.SetActive(true);
