@@ -11,7 +11,13 @@ public class TimeEntry : MonoBehaviour {
         
         nameText.text = record.GetUsername();
         // timeText.text = dateTimeOffset.LocalDateTime.ToShortTimeString();
-        TimeSpan time = TimeSpan.FromMilliseconds(record.GetTime());
-        timeText.text = time.ToString(@"mm\:ss\:fff");
+        timeText.text = FormatMs(record.GetTimeMs());
+    }
+
+    public static string FormatMs(int millseconds) {
+        TimeSpan time = TimeSpan.FromMilliseconds(millseconds);
+        string result = time.ToString(@"mm\:ss\:fff");
+
+        return result;
     }
 }

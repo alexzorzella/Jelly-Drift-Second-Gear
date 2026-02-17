@@ -36,6 +36,7 @@ public class RecordUtil : MonoBehaviour {
     const int chunkSize = 16 + paddedLength + 32;
 
     public static void Read() {
+        records.Clear();
         // string exists = File.Exists(path) ? "Yes" : "No";
         // Debug.Log($"{path} exists? {exists}");
 
@@ -62,7 +63,7 @@ public class RecordUtil : MonoBehaviour {
         bw.Write(record.GetUsername().PadRight(16, '\0').ToCharArray());
         bw.Write(record.GetMessage().PadRight(255, '\0').ToCharArray());
         bw.Write(record.GetDate());
-        bw.Write(record.GetTime());
+        bw.Write(record.GetTimeMs());
 
         return ms.ToArray();
     }

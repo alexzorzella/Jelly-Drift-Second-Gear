@@ -32,7 +32,7 @@ public class Record {
         return date;
     }
     
-    public int GetTime() {
+    public int GetTimeMs() {
         return time;
     }
 }

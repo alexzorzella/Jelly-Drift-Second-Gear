@@ -8,18 +8,20 @@ public class Leaderboard : MonoBehaviour {
     public VerticalLayoutGroup verticalLayoutGroup;
     RectTransform entryParent;
 
+    public TextMeshProUGUI timeText;
+    
     public TMP_InputField usernameInput;
     public TMP_InputField messageInput;
-
+    public GameObject submitButton;
+    
     readonly List<GameObject> timeEntryPool = new();
 
     int timeMs = -1;
     
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
-
+        DisableInput();
         RecordUtil.Read();
-        
         Refresh();
     }
 
@@ -44,7 +46,7 @@ public class Leaderboard : MonoBehaviour {
             records.Add(record);
         }
         
-        records.Sort((x, y) => x.GetTime().CompareTo(y.GetTime()));
+        records.Sort((x, y) => x.GetTimeMs().CompareTo(y.GetTimeMs()));
         
         foreach (Record record in records) {
             GameObject timeEntry = ResourceLoader.InstantiateObject("TimeEntry");
@@ -80,16 +82,30 @@ public class Leaderboard : MonoBehaviour {
             DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 
             timeMs);
         
-        RecordUtil.records.Add(record);
-        
-        RecordUtil.Write();
-
-        Refresh();
-
         timeMs = -1;
+        
+        DisableInput();
+        
+        RecordUtil.records.Add(record);
+        RecordUtil.Write();
+        Refresh();
     }
 
+    void EnableInput() {
+        usernameInput.gameObject.SetActive(true);
+        messageInput.gameObject.SetActive(true);
+        submitButton.SetActive(true);
+    }
+    
+    void DisableInput() {
+        usernameInput.gameObject.SetActive(false);
+        messageInput.gameObject.SetActive(false);
+        submitButton.SetActive(false);
+    }
+    
     public void ClockTime() {
         timeMs = Timer.Instance.GetMilliseconds();
+        timeText.text = TimeEntry.FormatMs(timeMs);
+        EnableInput();
     }
 }
