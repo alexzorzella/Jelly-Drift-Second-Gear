@@ -10,9 +10,6 @@ public class ShowCar : MonoBehaviour {
 
         if (show) {
             CarDisplay.Instance.Show();
-            return;
         }
-
-        // CarDisplay.Instance.Hide();
     }
 }
