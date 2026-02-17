@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4006329507889039925}
   - component: {fileID: 2212005964711461944}
   - component: {fileID: 8859655088699251157}
+  - component: {fileID: 3591601942831054581}
   m_Layer: 5
   m_Name: TimeEntry
   m_TagString: Untagged
@@ -78,6 +79,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3591601942831054581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374138467475072981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7855cac20b22455296723e2629a12fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 7789771263757652854}
+  timeText: {fileID: 8996108516065311753}
 --- !u!1 &5497283704928203760
 GameObject:
   m_ObjectHideFlags: 0

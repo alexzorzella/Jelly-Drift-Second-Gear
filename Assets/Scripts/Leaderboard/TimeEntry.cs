@@ -1,7 +1,8 @@
 using System;
 using TMPro;
+using UnityEngine;
 
-public class TimeEntry {
+public class TimeEntry : MonoBehaviour {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI timeText;
 
