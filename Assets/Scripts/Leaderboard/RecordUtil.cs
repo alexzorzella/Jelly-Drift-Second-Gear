@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using System.Text;
 
-public static class RecordUtil {
+public class RecordUtil : MonoBehaviour {
     static readonly byte[] Key = {
         0x55, 0xFF, 0xD7, 0xB7, 0x0C, 0x7D, 0x11, 
         0x3E, 0x3D, 0xAB, 0xDC, 0x6A, 0x75, 0x02, 
@@ -30,13 +30,14 @@ public static class RecordUtil {
         stream.Close();
     }
 
-    const int recordSize = 16 + 255 + 8 + 4;
-    const int chunkSize = 12 + 16 + recordSize;
-    
-    public static bool Read() {
-        if (!File.Exists(path)) {
-            return false;
-        }
+    const int plainTextLength = 16 + 255 + 8 + 4;
+    const int blockSize = 16;
+    const int paddedLength = ((plainTextLength + blockSize - 1) / blockSize) * blockSize;
+    const int chunkSize = 16 + paddedLength + 32;
+
+    public static void Read() {
+        // string exists = File.Exists(path) ? "Yes" : "No";
+        // Debug.Log($"{path} exists? {exists}");
 
         byte[] fileData = File.ReadAllBytes(path);
 
@@ -44,20 +45,16 @@ public static class RecordUtil {
             byte[] chunk = new byte[chunkSize];
             Array.Copy(fileData, i, chunk, 0, chunkSize);
 
-            try {
-                byte[] decrypted = Decrypt(chunk);
+            byte[] decrypted = Decrypt(chunk);
+
+            if (decrypted.Length > 0) {
                 Record record = DeserializeRecord(decrypted);
                 records.Add(record);
             }
-            catch (CryptographicException) {
-                
-            }
         }
-
-        return true;
     }
     
-    public static byte[] SerializeRecord(Record record) {
+    static byte[] SerializeRecord(Record record) {
         using var ms = new MemoryStream();
         using var bw = new BinaryWriter(ms, Encoding.UTF8);
         
@@ -70,14 +67,7 @@ public static class RecordUtil {
     }
     
     static byte[] Encrypt(Record record) {
-        byte[] nonce = new byte[12];
-
-        RandomNumberGenerator rng = RandomNumberGenerator.Create();
-        rng.GetBytes(nonce);
-        
         byte[] plainText = SerializeRecord(record);
-        
-        byte[] cypherText = new byte[plainText.Length];
 
         var aes = Aes.Create();
         aes.Mode = CipherMode.CBC;
@@ -111,7 +101,7 @@ public static class RecordUtil {
         byte[] computedTag = hmac.ComputeHash(cipherText);
 
         if (!computedTag.SequenceEqual(tag)) {
-            throw new CryptographicException("Tampered record");
+            return Array.Empty<byte>();
         }
 
         var aes = Aes.Create();

@@ -16,14 +16,12 @@ public class Leaderboard : MonoBehaviour {
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
 
+        RecordUtil.Read();
+        
         Refresh();
     }
 
-    public void Refresh() {
-        if (!RecordUtil.Read()) {
-            return;
-        }
-
+    void Refresh() {
         while (timeEntryPool.Count > 0) {
             GameObject timeEntry = timeEntryPool[0];
             timeEntryPool.RemoveAt(0);
