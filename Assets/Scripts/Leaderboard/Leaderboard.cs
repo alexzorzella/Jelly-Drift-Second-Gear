@@ -36,6 +36,14 @@ public class Leaderboard : MonoBehaviour {
     void Update() {
         if (Keyboard.current.enterKey.wasPressedThisFrame) {
             SubmitNewTime();
+        } else if (Keyboard.current.tabKey.wasPressedThisFrame) {
+            if (usernameInput.isFocused) {
+                messageInput.Select();
+            } else if (messageInput.isFocused) {
+                usernameInput.Select();
+            } else {
+                usernameInput.Select();
+            }
         }
     }
 
