@@ -222,6 +222,17 @@
                 },
                 {
                     "name": "",
+                    "id": "bcc08eb3-967e-4d2a-9093-0e98d80ad0cd",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reverse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ce4669d8-647b-4ebd-a0e8-cd1a66d43181",
                     "path": "<HID::PXN PXN-V10 Wheel>/button17",
                     "interactions": "",
@@ -235,6 +246,17 @@
                     "name": "",
                     "id": "7c474b52-a2bc-41fd-b4a0-14ada4a48a78",
                     "path": "<Keyboard>/numpad4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "First",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a17fb6e8-9e8f-44b9-81fe-b4bf2c99bad2",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -266,6 +288,17 @@
                 },
                 {
                     "name": "",
+                    "id": "db5ccbe9-10c0-450d-9614-15b8127cd428",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Second",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6f575978-9c31-4ac2-9776-fc81e107e3f3",
                     "path": "<HID::PXN PXN-V10 Wheel>/button19",
                     "interactions": "",
@@ -279,6 +312,17 @@
                     "name": "",
                     "id": "bc860322-9abd-4a58-bb77-d74a10358045",
                     "path": "<Keyboard>/numpad5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Third",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f00014f0-2487-4a13-a5c7-40289220ed29",
+                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -310,6 +354,17 @@
                 },
                 {
                     "name": "",
+                    "id": "be345b73-50ee-40ca-9a69-f613553055c1",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fourth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "89a1a60a-1ba1-4040-938e-9c53e6c5814a",
                     "path": "<HID::PXN PXN-V10 Wheel>/button21",
                     "interactions": "",
@@ -323,6 +378,17 @@
                     "name": "",
                     "id": "d7cdede8-d4e5-473f-bcc9-28b59c3db692",
                     "path": "<Keyboard>/numpad6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fifth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9d1ff3cf-ed6e-4083-9c63-8655cfc145fb",
+                    "path": "<Keyboard>/5",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
