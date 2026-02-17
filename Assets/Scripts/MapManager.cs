@@ -26,11 +26,11 @@ public class MapManager {
     }
     
     readonly List<MapData> maps = new() {
-        new MapData("Dusty Desert", new Color(0.811F, 0.38F, 0.09F, 0.75F)),
-        new MapData("Sneaky Snow", new Color(0, 0.43F, 1, 0.75F)),
-        new MapData("Pink Plains", new Color(1, 0.16F, 0.33F, 0.75F)),
-        new MapData("Akina Downhill", new Color(1, 0.12F, 0, 0.75F)),
-        new MapData("Flapjack Raceway", new Color(1, 0.12F, 0, 0.75F))
+        new MapData(0, "Dusty Desert", new Color(0.811F, 0.38F, 0.09F, 0.75F)),
+        new MapData(1, "Sneaky Snow", new Color(0, 0.43F, 1, 0.75F)),
+        new MapData(2, "Pink Plains", new Color(1, 0.16F, 0.33F, 0.75F)),
+        new MapData(3, "Akina Downhill", new Color(1, 0.12F, 0, 0.75F)),
+        new MapData(4, "Flapjack Raceway", new Color(1, 0.12F, 0, 0.75F))
     };
 
     public MapData GetMapAtIndex(int index) {
@@ -61,12 +61,14 @@ public class MapManager {
     }
 
     public class MapData {
+        int id;
         string name;
         Color themeColor;
         Sprite sprite;
         float[] times;
         
-        public MapData(string name, Color themeColor) {
+        public MapData(int id, string name, Color themeColor) {
+            this.id = id;
             this.name = name;
             this.themeColor = themeColor;
 
@@ -79,6 +81,10 @@ public class MapManager {
             }
         }
 
+        public int GetId() {
+            return id;
+        }
+        
         public string GetName() {
             return name;
         }

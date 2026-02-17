@@ -50,8 +50,15 @@ public class Leaderboard : MonoBehaviour {
 
         usernameInput.text = "";
         messageInput.text = "";
+
+        int stageId = MapManager.i.GetSelectedMap().GetId();
         
-        Record record = new Record(username, message, DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 1000);
+        Record record = new Record(
+            stageId,
+            username, 
+            message, 
+            DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 
+            1000);
         
         RecordUtil.records.Add(record);
         

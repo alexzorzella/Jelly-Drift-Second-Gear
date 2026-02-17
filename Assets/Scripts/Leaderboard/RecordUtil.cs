@@ -30,7 +30,7 @@ public class RecordUtil : MonoBehaviour {
         stream.Close();
     }
 
-    const int plainTextLength = 16 + 255 + 8 + 4;
+    const int plainTextLength = 4 + 16 + 255 + 8 + 4;
     const int blockSize = 16;
     const int paddedLength = ((plainTextLength + blockSize - 1) / blockSize) * blockSize;
     const int chunkSize = 16 + paddedLength + 32;
@@ -58,6 +58,7 @@ public class RecordUtil : MonoBehaviour {
         using var ms = new MemoryStream();
         using var bw = new BinaryWriter(ms, Encoding.UTF8);
         
+        bw.Write(record.GetStageId());
         bw.Write(record.GetUsername().PadRight(16, '\0').ToCharArray());
         bw.Write(record.GetMessage().PadRight(255, '\0').ToCharArray());
         bw.Write(record.GetDate());
@@ -120,13 +121,15 @@ public class RecordUtil : MonoBehaviour {
         MemoryStream ms = new MemoryStream(data);
         BinaryReader br = new BinaryReader(ms, Encoding.UTF8);
         
+        int stageId = br.ReadInt32();
+        
         string username = new string(br.ReadChars(16)).TrimEnd('\0');
         string message = new string(br.ReadChars(255)).TrimEnd('\0');
         
         long date = br.ReadInt64();
         int time = br.ReadInt32();
 
-        Record result = new(username, message, date, time);
+        Record result = new(stageId, username, message, date, time);
 
         return result;
     }
