@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class Leaderboard : MonoBehaviour {
     public VerticalLayoutGroup verticalLayoutGroup;
@@ -26,6 +27,9 @@ public class Leaderboard : MonoBehaviour {
     const int messageCharLimit = 180;
 
     public TextMeshProUGUI systemMessageText;
+
+    public TextMeshProUGUI championMessageText;
+    public RectTransform championMessageBgRect;
     
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
@@ -72,12 +76,21 @@ public class Leaderboard : MonoBehaviour {
         
         records.Sort((x, y) => x.GetTimeMs().CompareTo(y.GetTimeMs()));
 
+        championMessageBgRect.gameObject.SetActive(records.Count > 0);
+        
         List<string> displayedUsers = new();
         
         int count = 0;
         foreach (Record record in records) {
             if (displayedUsers.Contains(record.GetUsername())) {
                 continue;
+            }
+
+            if (count == 0) {
+                Debug.Log(record.GetMessage());
+                championMessageText.text = record.GetMessage();
+                championMessageText.ForceMeshUpdate();
+                championMessageBgRect.sizeDelta = championMessageText.GetRenderedValues() + Vector2.one * 25F;
             }
             
             GameObject timeEntry = ResourceLoader.InstantiateObject("TimeEntry");
@@ -99,6 +112,7 @@ public class Leaderboard : MonoBehaviour {
         }
         
         entryParent.sizeDelta = new Vector2(entryParent.sizeDelta.x, height);
+
     }
 
     public void SubmitNewTime() {
