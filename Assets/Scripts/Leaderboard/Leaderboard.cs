@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using ProfanityFilter;
+using UnityEngine.InputSystem;
 
 public class Leaderboard : MonoBehaviour {
     public VerticalLayoutGroup verticalLayoutGroup;
@@ -30,6 +31,12 @@ public class Leaderboard : MonoBehaviour {
         RecordUtil.Read();
         Refresh();
         UpdateCharCounterText("");
+    }
+
+    void Update() {
+        if (Keyboard.current.enterKey.wasPressedThisFrame) {
+            SubmitNewTime();
+        }
     }
 
     void Refresh() {
