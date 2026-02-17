@@ -319,6 +319,17 @@ public partial class @PXN: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""dc6c9cbc-80ca-42c6-888f-26fba6fb6ea8"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ce4669d8-647b-4ebd-a0e8-cd1a66d43181"",
                     ""path"": ""<HID::PXN PXN-V10 Wheel>/button17"",
                     ""interactions"": """",
@@ -343,6 +354,17 @@ public partial class @PXN: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""a17fb6e8-9e8f-44b9-81fe-b4bf2c99bad2"",
                     ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""First"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5dd5231a-3f9c-4ffc-9b1e-30520a895517"",
+                    ""path"": ""<Keyboard>/i"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -385,6 +407,17 @@ public partial class @PXN: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a4637d88-4dac-4f73-99f4-b58008ac4871"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Second"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6f575978-9c31-4ac2-9776-fc81e107e3f3"",
                     ""path"": ""<HID::PXN PXN-V10 Wheel>/button19"",
                     ""interactions"": """",
@@ -409,6 +442,17 @@ public partial class @PXN: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""f00014f0-2487-4a13-a5c7-40289220ed29"",
                     ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Third"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a6c5637-a9c4-4b82-9fba-5fced0fce853"",
+                    ""path"": ""<Keyboard>/o"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -451,6 +495,17 @@ public partial class @PXN: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""defc16b0-0fec-4a7b-9c4e-a908b66fe902"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fourth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""89a1a60a-1ba1-4040-938e-9c53e6c5814a"",
                     ""path"": ""<HID::PXN PXN-V10 Wheel>/button21"",
                     ""interactions"": """",
@@ -475,6 +530,17 @@ public partial class @PXN: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""9d1ff3cf-ed6e-4083-9c63-8655cfc145fb"",
                     ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fifth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""facf0703-6e2d-4d87-8f78-fb0958c2213f"",
+                    ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
