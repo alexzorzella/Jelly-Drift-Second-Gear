@@ -28,6 +28,7 @@ public class Leaderboard : MonoBehaviour {
 
     public TextMeshProUGUI systemMessageText;
 
+    public GameObject championMessageObject;
     public TextMeshProUGUI championMessageText;
     public RectTransform championMessageBgRect;
     
@@ -76,7 +77,7 @@ public class Leaderboard : MonoBehaviour {
         
         records.Sort((x, y) => x.GetTimeMs().CompareTo(y.GetTimeMs()));
 
-        championMessageBgRect.gameObject.SetActive(records.Count > 0);
+        championMessageObject.SetActive(records.Count > 0);
         
         List<string> displayedUsers = new();
         
@@ -90,6 +91,13 @@ public class Leaderboard : MonoBehaviour {
                 championMessageText.text = record.GetMessage();
                 championMessageText.ForceMeshUpdate();
                 championMessageBgRect.sizeDelta = championMessageText.GetRenderedValues() + Vector2.one * 25F;
+
+                LeanTween.cancel(championMessageObject);
+                championMessageObject.transform.localScale = Vector2.zero;
+                
+                LeanTween.value(championMessageObject, 0, 1, 0.5F).
+                    setOnUpdate((scale) => { championMessageObject.transform.localScale = new Vector2(scale, scale); }).
+                    setEase(LeanTweenType.easeOutBounce);
             }
             
             GameObject timeEntry = ResourceLoader.InstantiateObject("TimeEntry");

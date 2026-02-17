@@ -3868,7 +3868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0.0002593994}
+  m_AnchoredPosition: {x: 0, y: 0.00024414062}
   m_SizeDelta: {x: 0.000061035, y: 0.00048828}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7229472239834200600
@@ -4554,6 +4554,7 @@ MonoBehaviour:
   charCounterText: {fileID: 4363914011315053531}
   submitButton: {fileID: 6336317174867124622}
   systemMessageText: {fileID: 2709671624539582619}
+  championMessageObject: {fileID: 7866617111639410584}
   championMessageText: {fileID: 4911414306503316904}
   championMessageBgRect: {fileID: 1679186098293153107}
 --- !u!1 &3140825441139052234
@@ -12810,10 +12811,10 @@ RectTransform:
   - {fileID: 2765304897356903746}
   m_Father: {fileID: 378359664925273428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -688.3, y: -58.1}
-  m_SizeDelta: {x: 432.71713, y: 462.4683}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -1042, y: -349}
+  m_SizeDelta: {x: 432.71716, y: 462.46826}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7890073086304512871
 GameObject:
