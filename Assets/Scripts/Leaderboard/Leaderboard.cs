@@ -27,7 +27,7 @@ public class Leaderboard : MonoBehaviour {
     
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
-        EnableInput();
+        DisableInput();
         RecordUtil.Read();
         Refresh();
         UpdateCharCounterText("");
