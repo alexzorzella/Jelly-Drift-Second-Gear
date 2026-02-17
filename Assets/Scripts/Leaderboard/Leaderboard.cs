@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ProfanityFilter;
 
 public class Leaderboard : MonoBehaviour {
     public VerticalLayoutGroup verticalLayoutGroup;
@@ -17,10 +18,12 @@ public class Leaderboard : MonoBehaviour {
     readonly List<GameObject> timeEntryPool = new();
 
     int timeMs = -1;
+
+    ProfanityFilter.ProfanityFilter filter = new();
     
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
-        DisableInput();
+        EnableInput();
         RecordUtil.Read();
         Refresh();
     }
@@ -78,9 +81,34 @@ public class Leaderboard : MonoBehaviour {
         string username = usernameInput.text;
         string message = messageInput.text;
 
+        var usernameProfanities = filter.DetectAllProfanities(username);
+        var messageProfanities = filter.DetectAllProfanities(message);
+        
+        if (usernameProfanities.Count > 0 ||
+            messageProfanities.Count > 0) {
+            // string debug = "Flagged.\n";
+            //
+            // foreach (var word in usernameProfanities) {
+            //     debug += $"{word}\n";
+            // }
+            //
+            // foreach (var word in messageProfanities) {
+            //     debug += $"{word}\n";
+            // }
+            //
+            // Debug.Log(debug);
+            
+            return;
+        }
+        // else {
+        //     Debug.Log("Allowed");
+        // }
+
+        // return;
+
         usernameInput.text = "";
         messageInput.text = "";
-
+        
         int stageId = MapManager.i.GetSelectedMap().GetId();
         
         Record record = new Record(
