@@ -95,9 +95,9 @@ public class Leaderboard : MonoBehaviour {
                 LeanTween.cancel(championMessageObject);
                 championMessageObject.transform.localScale = Vector2.zero;
                 
-                LeanTween.value(championMessageObject, 0, 1, 0.15F).
+                LeanTween.value(championMessageObject, 0, 1, 0.25F).
                     setOnUpdate((scale) => { championMessageObject.transform.localScale = new Vector2(scale, scale); }).
-                    setEase(LeanTweenType.easeOutBounce);
+                    setEase(LeanTweenType.easeOutExpo);
             }
             
             GameObject timeEntry = ResourceLoader.InstantiateObject("TimeEntry");
