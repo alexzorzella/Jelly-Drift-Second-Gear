@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using UnityEngine;
 using System.Text;
@@ -16,9 +17,9 @@ public static class RecordUtil {
 
     static readonly string path = Application.persistentDataPath + "/leaderboard.weaver";
 
-    static readonly List<Record> records = new();
+    public static readonly List<Record> records = new();
     
-    public static void Save() {
+    public static void Write() {
         FileStream stream = new FileStream(path, FileMode.Create);
 
         foreach (var record in records) {
@@ -32,7 +33,7 @@ public static class RecordUtil {
     const int recordSize = 16 + 255 + 8 + 4;
     const int chunkSize = 12 + 16 + recordSize;
     
-    public static bool Load() {
+    public static bool Read() {
         if (!File.Exists(path)) {
             return false;
         }
@@ -68,7 +69,7 @@ public static class RecordUtil {
         return ms.ToArray();
     }
     
-    public static byte[] Encrypt(Record record) {
+    static byte[] Encrypt(Record record) {
         byte[] nonce = new byte[12];
 
         RandomNumberGenerator rng = RandomNumberGenerator.Create();
@@ -77,33 +78,55 @@ public static class RecordUtil {
         byte[] plainText = SerializeRecord(record);
         
         byte[] cypherText = new byte[plainText.Length];
-        byte[] tag = new byte[16];
 
-        AesGcm aes = new AesGcm(Key);
-        aes.Encrypt(nonce, plainText, cypherText, tag);
+        var aes = Aes.Create();
+        aes.Mode = CipherMode.CBC;
+        aes.Padding = PaddingMode.PKCS7;
+        aes.Key = Key;
+        aes.GenerateIV();
+        
+        var encryptor = aes.CreateEncryptor();
+        byte[] cipherText = encryptor.TransformFinalBlock(plainText, 0, plainText.Length);
+
+        var hmac = new HMACSHA256(Key);
+        byte[] tag = hmac.ComputeHash(cipherText);
         
         MemoryStream ms = new MemoryStream();
-        ms.Write(nonce);
+        ms.Write(aes.IV);
+        ms.Write(cipherText);
         ms.Write(tag);
-        ms.Write(cypherText);
 
         return ms.ToArray();
     }
-
-    public static byte[] Decrypt(byte[] data) {
-        byte[] nonce = data[..12];
-        byte[] tag = data[12..28];
-        byte[] cipherText = data[28..];
     
-        byte[] plainText = new byte[cipherText.Length];
-    
-        AesGcm aes = new AesGcm(Key);
-        aes.Decrypt(nonce, cipherText, tag, plainText);
+    const int ivLength = 16;
+    const int tagLength = 32;
 
+    static byte[] Decrypt(byte[] data) {
+        byte[] iv = data[..ivLength];
+        byte[] tag = data[^tagLength..];
+        byte[] cipherText = data[ivLength..^tagLength];
+        
+        var hmac = new HMACSHA256(Key);
+        byte[] computedTag = hmac.ComputeHash(cipherText);
+
+        if (!computedTag.SequenceEqual(tag)) {
+            throw new CryptographicException("Tampered record");
+        }
+
+        var aes = Aes.Create();
+        aes.Mode = CipherMode.CBC;
+        aes.Padding = PaddingMode.PKCS7;
+        aes.Key = Key;
+        aes.IV = iv;
+        
+        var decryptor = aes.CreateDecryptor();
+        byte[] plainText = decryptor.TransformFinalBlock(cipherText, 0, cipherText.Length);
+        
         return plainText;
     }
 
-    public static Record DeserializeRecord(byte[] data) {
+    static Record DeserializeRecord(byte[] data) {
         MemoryStream ms = new MemoryStream(data);
         BinaryReader br = new BinaryReader(ms, Encoding.UTF8);
         
@@ -116,11 +139,5 @@ public static class RecordUtil {
         Record result = new(username, message, date, time);
 
         return result;
-    }
-
-    public static List<Record> DeserializeScores(byte[] rawData) {
-        string json = System.Text.Encoding.UTF8.GetString(rawData);
-        RecordCollection recordCollection = JsonUtility.FromJson<RecordCollection>(json);
-        return recordCollection.GetRecords();
     }
 }
