@@ -49,8 +49,14 @@ public class Leaderboard : MonoBehaviour {
         
         records.Sort((x, y) => x.GetTimeMs().CompareTo(y.GetTimeMs()));
 
+        List<string> displayedUsers = new();
+        
         int count = 0;
         foreach (Record record in records) {
+            if (displayedUsers.Contains(record.GetUsername())) {
+                continue;
+            }
+            
             GameObject timeEntry = ResourceLoader.InstantiateObject("TimeEntry");
             timeEntry.GetComponent<TimeEntry>().Initialize(record);
             timeEntry.transform.SetParent(entryParent);
@@ -60,7 +66,8 @@ public class Leaderboard : MonoBehaviour {
             height += verticalLayoutGroup.spacing;
             
             timeEntryPool.Add(timeEntry);
-
+            displayedUsers.Add(record.GetUsername());
+            
             count++;
 
             if (count >= 5) {
