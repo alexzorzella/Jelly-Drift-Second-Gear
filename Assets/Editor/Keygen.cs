@@ -10,9 +10,8 @@ public class KeygenWindow: EditorWindow {
         if (keyAsString == "") {
             byte[] key = new byte[32];
         
-            using (var rng = RandomNumberGenerator.Create()) {
-                rng.GetBytes(key);
-            }
+            RandomNumberGenerator rng = RandomNumberGenerator.Create();
+            rng.GetBytes(key);
             
             keyAsString = string.Join(", ", key.Select(b => $"0x{b:X2}"));
         }
