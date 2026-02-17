@@ -36,10 +36,14 @@ public class RecordUtil : MonoBehaviour {
     const int chunkSize = 16 + paddedLength + 32;
 
     public static void Read() {
-        records.Clear();
-        // string exists = File.Exists(path) ? "Yes" : "No";
-        // Debug.Log($"{path} exists? {exists}");
+        bool exists = File.Exists(path);
 
+        if (!exists) {
+            return;
+        }
+        
+        records.Clear();
+        
         byte[] fileData = File.ReadAllBytes(path);
 
         for (int i = 0; i + chunkSize <= fileData.Length; i += chunkSize) {

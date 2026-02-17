@@ -14,7 +14,7 @@ public class Race : MonoBehaviour {
         gameController = gameObject.GetComponent<GameController>();
         var startPos = gameController.startPos;
         
-        enemyCarObject = ResourceLoader.InstantiateObject("Car", startPos.position + startPos.forward * 10f, startPos.rotation);
+        enemyCarObject = ResourceLoader.InstantiateObject("Car", startPos.position + startPos.right * 2F, startPos.rotation);
 
         Car enemyCar = enemyCarObject.GetComponent<Car>();
         
