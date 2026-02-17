@@ -61,4 +61,8 @@ public class Timer : MonoBehaviour {
     public int GetMinutes() {
         return (int)Mathf.Floor(timer / 60f);
     }
+
+    public int GetMilliseconds() {
+        return (int)Mathf.Floor(timer * 1000F);
+    }
 }

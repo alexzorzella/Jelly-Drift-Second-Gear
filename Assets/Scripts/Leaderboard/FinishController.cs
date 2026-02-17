@@ -24,6 +24,7 @@ public class FinishController : MonoBehaviour {
             var num = Timer.Instance.GetTimer();
 
             timer.text = Timer.GetFormattedTime(num);
+            FindFirstObjectByType<Leaderboard>().ClockTime();
         }
         else if (GameState.i.gamemode == Gamemode.Race) {
             racePanel.SetActive(true);

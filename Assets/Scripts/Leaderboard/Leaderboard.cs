@@ -12,6 +12,8 @@ public class Leaderboard : MonoBehaviour {
     public TMP_InputField messageInput;
 
     readonly List<GameObject> timeEntryPool = new();
+
+    int timeMs = -1;
     
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
@@ -30,7 +32,21 @@ public class Leaderboard : MonoBehaviour {
 
         float height = 0;
         
+        int stageId = MapManager.i.GetSelectedMap().GetId();
+
+        List<Record> records = new();
+
         foreach (var record in RecordUtil.records) {
+            if (record.GetStageId() != stageId) {
+                continue;
+            }
+
+            records.Add(record);
+        }
+        
+        records.Sort((x, y) => x.GetTime().CompareTo(y.GetTime()));
+        
+        foreach (Record record in records) {
             GameObject timeEntry = ResourceLoader.InstantiateObject("TimeEntry");
             timeEntry.GetComponent<TimeEntry>().Initialize(record);
             timeEntry.transform.SetParent(entryParent);
@@ -45,6 +61,10 @@ public class Leaderboard : MonoBehaviour {
     }
 
     public void SubmitNewTime() {
+        if (timeMs <= 0) {
+            return;
+        }
+        
         string username = usernameInput.text;
         string message = messageInput.text;
 
@@ -58,12 +78,18 @@ public class Leaderboard : MonoBehaviour {
             username, 
             message, 
             DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 
-            1000);
+            timeMs);
         
         RecordUtil.records.Add(record);
         
         RecordUtil.Write();
 
         Refresh();
+
+        timeMs = -1;
+    }
+
+    public void ClockTime() {
+        timeMs = Timer.Instance.GetMilliseconds();
     }
 }
