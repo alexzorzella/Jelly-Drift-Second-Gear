@@ -20,7 +20,8 @@ public class MainMenuNewsScroll : MonoBehaviour {
                 continue;
             }
 
-            finalMessage += $"{record.GetUsername()} ({TimeEntry.FormatMs(record.GetTimeMs())}) '{record.GetMessage()}' / ";
+            finalMessage += 
+                $"On {record.GetFormattedDate()}, {record.GetUsername()} achieved a time of {TimeEntry.FormatMs(record.GetTimeMs())}. \"{record.GetMessage()}\" ";
             
             stageIds.Add(record.GetStageId());
         }

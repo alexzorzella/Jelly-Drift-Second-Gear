@@ -37,6 +37,12 @@ public class Record {
     public long GetDate() {
         return date;
     }
+
+    public string GetFormattedDate() {
+        DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(GetDate());
+        string result = dateTimeOffset.ToLocalTime().DateTime.ToShortDateString();
+        return result;
+    }
     
     public int GetTimeMs() {
         return time;
