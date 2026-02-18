@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 1101487464417475394}
   - component: {fileID: 1110191903600097829}
   - component: {fileID: 1141768405503643789}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: truck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,12 +101,12 @@ Transform:
   m_LocalScale: {x: 1.48478, y: 1.48478, z: 1.48478}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8948989490403765016}
   - {fileID: 6553347053217921444}
   - {fileID: 8886963443744899466}
   - {fileID: 7050598426947232710}
   - {fileID: 8665528983381062920}
   - {fileID: 573901775126171242}
-  - {fileID: 8948989490403765016}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0.002}
 --- !u!33 &1101487464417475394
@@ -8606,8 +8606,8 @@ GameObject:
   - component: {fileID: 5449048864230696125}
   - component: {fileID: 7816593482501820535}
   - component: {fileID: 8124668814449364496}
-  m_Layer: 0
-  m_Name: Car8
+  m_Layer: 10
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

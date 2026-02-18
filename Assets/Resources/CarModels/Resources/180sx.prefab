@@ -186,7 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 249609127975134703}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: 180sx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17132,7 +17132,7 @@ GameObject:
   - component: {fileID: 2369334052763744247}
   - component: {fileID: 1280195359793681251}
   - component: {fileID: 7457546917737943361}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 7786340963954816309}
   - component: {fileID: 6713488236665786785}
   - component: {fileID: 3047493244578701485}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11340,7 +11340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8088737228257283613}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: integra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11360,13 +11360,13 @@ Transform:
   m_LocalScale: {x: 1.63449, y: 1.63449, z: 1.63449}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4961150971741424767}
   - {fileID: 8089007412428940070}
   - {fileID: 2373970051181214800}
   - {fileID: 2548707727374481297}
   - {fileID: 1206230596582506718}
   - {fileID: 2607955978995506992}
   - {fileID: 7607980625065695357}
-  - {fileID: 4961150971741424767}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0.00001931869, z: 0}
 --- !u!1 &8094787383381468771

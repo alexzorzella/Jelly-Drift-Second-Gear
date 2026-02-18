@@ -13833,7 +13833,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7014013837768920911}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: rx7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13853,12 +13853,12 @@ Transform:
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 904207312349613623}
   - {fileID: 8697455892507212369}
   - {fileID: 5797691311799695469}
   - {fileID: 8677350810728643877}
   - {fileID: 7318041455942676812}
   - {fileID: 939258661519854154}
-  - {fileID: 904207312349613623}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7937477020714429426
@@ -16567,7 +16567,7 @@ GameObject:
   - component: {fileID: 2619771853438908285}
   - component: {fileID: 1548946625457148905}
   - component: {fileID: 2556646120670702715}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

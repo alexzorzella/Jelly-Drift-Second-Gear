@@ -45,7 +45,7 @@ public static class CarCatalogue {
             WithDriftSpecs(1.2F).
             WithMaterials("Midnight").Build(),
         new CarData.Builder(20, "Automobile").
-            WithSuspensionSpecs(0.45F).
+            WithSuspensionSpecs(0.45F),
             WithCarSpecs(engineForce: 3200, stability: 0).
             WithDriftSpecs(1.2F).
             WithPhysicsSpecs(mass: 1200).
