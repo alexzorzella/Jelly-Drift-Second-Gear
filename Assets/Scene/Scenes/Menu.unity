@@ -29677,7 +29677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Version: 3
-  m_UsePipelineSettings: 1
+  m_UsePipelineSettings: 0
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
   m_RenderingLayers: 1
@@ -29704,13 +29704,13 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_Bias: 1.68
+    m_NormalBias: 1
+    m_NearPlane: 0.3
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -29760,13 +29760,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274177621}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.69794226, y: -0.7159284, z: 0.01751676, w: 0.0040402384}
+  m_LocalRotation: {x: 0.6887016, y: -0.71291333, z: 0.11467369, w: -0.065533936}
   m_LocalPosition: {x: -0.3402419, y: 8.78, z: 25.434128}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -181.76, y: -361.07, z: 91.441}
+  m_LocalEulerAnglesHint: {x: -184.2, y: -374.6, z: 91.441}
 --- !u!1 &1357223187
 GameObject:
   m_ObjectHideFlags: 0
