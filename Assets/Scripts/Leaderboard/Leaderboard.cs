@@ -153,9 +153,11 @@ public class Leaderboard : MonoBehaviour {
         messageInput.text = "";
         
         int stageId = MapManager.i.GetSelectedMap().GetId();
+        int carId = CarCatalogue.GetSelectedCarData().GetId();
         
         Record record = new Record(
             stageId,
+            carId,
             username, 
             message, 
             DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 

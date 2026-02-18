@@ -2,8 +2,9 @@ using System;
 
 [Serializable]
 public class Record {
-    public Record(int stageId, string username, string message, long date, int time) {
+    public Record(int stageId, int carId, string username, string message, long date, int time) {
         this.stageId = stageId;
+        this.carId = stageId;
         this.username = username;
         this.message = message;
         this.date = date;
@@ -11,6 +12,7 @@ public class Record {
     }
 
     readonly int stageId;
+    readonly int carId;
     readonly string username;
     readonly string message;
     readonly long date;
@@ -18,6 +20,10 @@ public class Record {
 
     public int GetStageId() {
         return stageId;
+    }
+
+    public int GetCarId() {
+        return carId;
     }
     
     public string GetUsername() {
