@@ -16,7 +16,7 @@ public class InfiniteScroll : MonoBehaviour {
 
     float width;
 
-    public void Start() {
+    public void Awake() {
         rect = GetComponent<RectTransform>();
         width = rect.sizeDelta.x;
 
