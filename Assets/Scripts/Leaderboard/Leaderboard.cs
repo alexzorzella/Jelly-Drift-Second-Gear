@@ -31,13 +31,17 @@ public class Leaderboard : MonoBehaviour {
     public GameObject championMessageObject;
     public TextMeshProUGUI championMessageText;
     public RectTransform championMessageBgRect;
+
+    string lastUserMessageId = "";
     
     void Awake() {
         entryParent = verticalLayoutGroup.GetComponent<RectTransform>();
         DisableInput();
         RecordUtil.Read();
         Refresh();
+        
         UpdateCharCounterText("");
+        championMessageObject.transform.localScale = Vector2.zero;
     }
 
     void Update() {
@@ -93,11 +97,29 @@ public class Leaderboard : MonoBehaviour {
                 championMessageBgRect.sizeDelta = championMessageText.GetRenderedValues() + Vector2.one * 25F;
 
                 LeanTween.cancel(championMessageObject);
-                championMessageObject.transform.localScale = Vector2.zero;
+
+                string userMessageId = record.GetUsername() + record.GetMessage();
+
+                if (userMessageId != lastUserMessageId) {
+                    float delay = 0;
+                    
+                    if (lastUserMessageId != "") {
+                        delay = 0.1F;
+                        
+                        LeanTween.value(championMessageObject, 1, 0, delay).
+                            setOnUpdate((scale) => { championMessageObject.transform.localScale = new Vector2(scale, scale); }).
+                            setEase(LeanTweenType.easeOutExpo);
+                    }
+    
+                    lastUserMessageId = userMessageId;
+    
+                    LeanTween.delayedCall(championMessageObject, delay, () => {
+                        LeanTween.value(championMessageObject, 0, 1, 0.25F).
+                            setOnUpdate((scale) => { championMessageObject.transform.localScale = new Vector2(scale, scale); }).
+                            setEase(LeanTweenType.easeOutExpo);
+                    });
+                }
                 
-                LeanTween.value(championMessageObject, 0, 1, 0.25F).
-                    setOnUpdate((scale) => { championMessageObject.transform.localScale = new Vector2(scale, scale); }).
-                    setEase(LeanTweenType.easeOutExpo);
             }
             
             GameObject timeEntry = ResourceLoader.InstantiateObject("TimeEntry");
@@ -119,7 +141,6 @@ public class Leaderboard : MonoBehaviour {
         }
         
         entryParent.sizeDelta = new Vector2(entryParent.sizeDelta.x, height);
-
     }
 
     public void SubmitNewTime() {
