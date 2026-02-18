@@ -14,12 +14,10 @@ public class InfiniteScroll : MonoBehaviour {
     TextMeshProUGUI[] textComponents;
     RectTransform rect;
 
-    float width;
+    float width = -1;
 
     public void Awake() {
         rect = GetComponent<RectTransform>();
-        width = rect.sizeDelta.x;
-
         textComponents = GetComponentsInChildren<TextMeshProUGUI>();
     }
 
@@ -31,13 +29,17 @@ public class InfiniteScroll : MonoBehaviour {
             textComponent.ForceMeshUpdate();
 
             RectTransform localRect = textComponent.GetComponent<RectTransform>();
-            rect.sizeDelta = textComponent.GetRenderedValues();
+            rect.sizeDelta = textComponent.GetRenderedValues(false);
 
-            float width = rect.rect.width;
+            float localWidth = rect.rect.width;
+
+            if (width <= 0) {
+                width = localWidth;
+            }
 
             localRect.anchoredPosition = new Vector2(totalWidth, 0);
             
-            totalWidth += width;
+            totalWidth += localWidth;
         }
     }
     
