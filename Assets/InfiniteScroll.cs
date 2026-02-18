@@ -11,7 +11,7 @@ public class InfiniteScroll : MonoBehaviour {
     public Direction direction;
     public float speed = 1F;
 
-    List<TextMeshProUGUI> textComponents;
+    List<TextMeshProUGUI> textComponents = new();
     RectTransform rect;
 
     float width;
