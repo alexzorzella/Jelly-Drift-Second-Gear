@@ -21,6 +21,8 @@ public class MainMenuNewsScroll : MonoBehaviour {
             }
 
             finalMessage += $"{record.GetUsername()} ({TimeEntry.FormatMs(record.GetTimeMs())}) '{record.GetMessage()}' / ";
+            
+            stageIds.Add(record.GetStageId());
         }
         
         GetComponent<InfiniteScroll>().SetText(finalMessage);
