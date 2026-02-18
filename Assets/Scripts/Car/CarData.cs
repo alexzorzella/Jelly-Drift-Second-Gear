@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CarData {
+    readonly int id = -1;
+    
     readonly string name;
     
     readonly float mass;
@@ -38,6 +40,7 @@ public class CarData {
     readonly List<Material> materials = new();
     
     CarData(
+        int id,
         string name,
         float mass,
         float linearDamping,
@@ -83,6 +86,8 @@ public class CarData {
     }
 
     public class Builder {
+        readonly int id = -1;
+        
         readonly string name;
         
         float mass = 1000F;
@@ -118,7 +123,8 @@ public class CarData {
         GameObject model;
         List<Material> materials = new();
         
-        public Builder(string name, string modelName = "") {
+        public Builder(int id, string name, string modelName = "") {
+            this.id = id;
             this.name = name;
 
             if (string.IsNullOrWhiteSpace(modelName)) {
@@ -199,6 +205,7 @@ public class CarData {
         
         public CarData Build() {
             return new CarData(
+                id,
                 name,
                 mass,
                 linearDamping,
@@ -251,4 +258,6 @@ public class CarData {
     
     public GameObject GetModel() { return model; }
     public List<Material> GetMaterials() { return materials; }
+
+    public int GetId() { return id; }
 }

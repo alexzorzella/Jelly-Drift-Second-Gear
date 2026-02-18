@@ -13,7 +13,7 @@ public class TimeEntry : MonoBehaviour {
         // timeText.text = dateTimeOffset.LocalDateTime.ToShortTimeString();
         timeText.text = FormatMs(record.GetTimeMs());
     }
-
+    
     public static string FormatMs(int millseconds) {
         TimeSpan time = TimeSpan.FromMilliseconds(millseconds);
         string result = time.ToString(@"mm\:ss\:fff");

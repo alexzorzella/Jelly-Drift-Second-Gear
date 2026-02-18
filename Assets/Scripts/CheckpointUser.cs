@@ -59,10 +59,7 @@ public class CheckpointUser : MonoBehaviour {
             return;
         }
 
-        var component = ResourceLoader.InstantiateObject("SplitUi").GetComponent<SplitUi>();
-        component.transform.SetParent(UIManager.Instance.splitPos);
-        component.transform.localPosition = Vector3.zero;
-        component.SetSplit(Timer.GetFormattedTime(Timer.Instance.GetTimer()));
+        UIManager.Instance.DisplaySplit();
     }
 
     public void ForceCheckpoint(int n) {

@@ -25,45 +25,45 @@ public static class CarCatalogue {
     }
     
     static readonly List<CarData> cars = new() {
-        new CarData.Builder("Nissaan 2SX", "180sx").
+        new CarData.Builder(0, "Nissaan 2SX", "180sx").
             WithMaterials("Gray", "Yellow", "Purple", "Blue", "Shadow").Build(),
-        new CarData.Builder("Nissaan Silva", "s14").
+        new CarData.Builder(1, "Nissaan Silva", "s14").
             WithCarSpecs(3070, stability: 0.5F).
             WithDriftSpecs(1.37F).
             WithMaterials("Gray", "Blue", "Crimson", "Midnight", "Dream").
             WithAudio("s14_accel").Build(),
-        new CarData.Builder("Denva", "rx7").
+        new CarData.Builder(11, "Denva", "rx7").
             WithSuspensionSpecs(0.37F).
             WithCarSpecs(3150, stability: 0.1F).
             WithDriftSpecs(1.3F).
             WithMaterials("Scuffed", "Blue", "Shadow", "Sakura", "The Original").
             WithAudio("rx7_accel").Build(),
-        new CarData.Builder("Off-Roader", "truck").
+        new CarData.Builder(20, "Off-Roader", "truck").
             WithSuspensionSpecs(0.45F).
             WithCarSpecs(stability: 0).
             WithDriftSpecs(1.2F).
             WithMaterials("Midnight").Build(),
-        new CarData.Builder("Accurate Integral", "integra").
+        new CarData.Builder(30, "Accurate Integral", "integra").
             WithCarSpecs(3030, stability: 0.7F).
             WithDriftSpecs(1.4F).
             WithMaterials("Gray", "Midnight", "Crimson", "Yellow", "OJ").
             WithAudio("db8_accel").Build(),
-        new CarData.Builder("Nissaan Freshpine", "skyline").
+        new CarData.Builder(2, "Nissaan Freshpine", "skyline").
             WithCarSpecs(2850, stability: 0.9F).
             WithDriftSpecs(1, 0.45F).
             WithMaterials("Gray", "Midnight", "Crimson", "Sakura", "Shadow").
             WithAudio("r32_accel").Build(),
-        new CarData.Builder("Nissaan Silva HQR", "s14").
+        new CarData.Builder(3, "Nissaan Silva HQR", "s14").
             WithPhysicsSpecs(1350, 0, 0.4F).
             WithCarSpecs(antiRoll: 8000, stability: 0).
             WithDriftSpecs(1.2F, 0.8F).
             WithMaterials("Beach").
             WithAudio("s14_accel").Build(),
-        new CarData.Builder("Fuji TFM", "ae86").
+        new CarData.Builder(35, "Fuji TFM", "ae86").
             WithCarSpecs(3050, stability: 0.25F).
             WithDriftSpecs(1.43F).
             WithMaterials("4th Stage", "Tofu", "Tofu_1", "tofu_2", "ToduHidden", "Tofu").Build(),
-        new CarData.Builder("Banana").
+        new CarData.Builder(50, "Banana").
             WithSuspensionSpecs(0.55F).
             WithCarSpecs(3000, 1, 5000, 0).
             WithDriftSpecs(1.2F, 0.4F).
@@ -71,18 +71,18 @@ public static class CarCatalogue {
     };
 
     static readonly List<CarData> opponentCars = new() {
-        new CarData.Builder("T54 Grand Turismo", "skyline").
+        new CarData.Builder(90, "T54 Grand Turismo", "skyline").
             WithPhysicsSpecs(1400).
             WithCarSpecs(2850, stability: 0).
             WithDriftSpecs(1, 1).
             WithMaterials("Gray", "Midnight", "Crimson", "Sakura", "Shadow").Build(),
-        new CarData.Builder("FD8 Grand Turismo", "integra").
+        new CarData.Builder(91, "FD8 Grand Turismo", "integra").
             WithPhysicsSpecs(1400).
             WithSuspensionSpecs(0.3F, 0.25F, 20000, 1600).
             WithCarSpecs(3030, antiRoll: 8000).
             WithDriftSpecs(1.4F, 1F).
             WithMaterials("Gray", "Midnight", "Crimson", "Yellow", "OJ").Build(),
-        new CarData.Builder("TZ9 Grand Turismo", "rx7").
+        new CarData.Builder(92, "TZ9 Grand Turismo", "rx7").
             WithPhysicsSpecs(1400, 0.6F, 1).
             WithSuspensionSpecs(0.37F).
             WithDriftSpecs(1.3F, 1F).
