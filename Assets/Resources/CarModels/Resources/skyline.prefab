@@ -16772,7 +16772,6 @@ GameObject:
   - component: {fileID: 8985463838698323080}
   - component: {fileID: 8995318164211775526}
   - component: {fileID: 9004544102909305562}
-  - component: {fileID: 8953424906378598999}
   m_Layer: 10
   m_Name: skyline
   m_TagString: Untagged
@@ -16866,25 +16865,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8953424906378598999
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8982384311725809042}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 06c7866dd4d7638448b1894d44269103, type: 2}
