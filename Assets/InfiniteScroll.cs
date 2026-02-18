@@ -20,15 +20,24 @@ public class InfiniteScroll : MonoBehaviour {
         rect = GetComponent<RectTransform>();
         width = rect.sizeDelta.x;
 
-        textComponents.Add(GetComponent<TextMeshProUGUI>());
         textComponents.AddRange(GetComponentsInChildren<TextMeshProUGUI>());
     }
 
     public void SetText(string text) {
+        float totalWidth = 0;
+
         foreach(var textComponent in textComponents) {
             textComponent.text = text;
             textComponent.ForceMeshUpdate();
-            textComponent.GetComponent<RectTransform>().sizeDelta = textComponent.GetRenderedValues() + new Vector2(0, 20);
+
+            RectTransform localRect = textComponent.GetComponent<RectTransform>();
+            rect.sizeDelta = textComponent.GetRenderedValues();
+
+            float width = rect.rect.width;
+
+            localRect.anchoredPosition = new Vector2(totalWidth, 0);
+            
+            totalWidth += width;
         }
     }
     
