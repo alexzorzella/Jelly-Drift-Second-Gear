@@ -19,10 +19,16 @@ public class RealtimeSun : MonoBehaviour {
     public GameObject nighttimeLights;
 
     bool isNight = false;
+
+    float rotY;
+    float rotZ;
     
     void Start() {
         lightSource = GetComponent<Light>();
         volume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
+
+        rotY = transform.rotation.eulerAngles.y;
+        rotZ = transform.rotation.eulerAngles.z;
     }
 
     void Update() {
@@ -31,9 +37,9 @@ public class RealtimeSun : MonoBehaviour {
         int secondsPassedToday = (int)timeOfDay.TotalSeconds;
         
         percentageOfDayPassed = (float)secondsPassedToday / secondsInADay;
-        float sunAngle = (360 * percentageOfDayPassed + 252) % 360;
+        float sunAngle = 360 * percentageOfDayPassed - 90;
 
-        transform.rotation = Quaternion.Euler(sunAngle, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        transform.rotation = Quaternion.Euler(sunAngle, rotY, rotZ);
 
         bool night = sunAngle > 190 || sunAngle < 80;
 
