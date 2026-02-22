@@ -52,9 +52,9 @@ public static class CarCatalogue {
             WithMaterials("Midnight").Build(),
         new CarData.Builder(20, "Mom Van", "van").
             WithSuspensionSpecs(0.45F).
-            WithCarSpecs(stability: 0, antiRoll: 6000F, engineForce: 2900, steerForce: 0.95F).
+            WithCarSpecs(stability: 0).
             WithDriftSpecs(1.8F).
-            WithPhysicsSpecs(mass: 1200).
+            WithPhysicsSpecs(mass: 1100).
             WithMaterials("Midnight").Build(),
         new CarData.Builder(30, "Accurate Integral", "integra").
             WithCarSpecs(3030, stability: 0.7F).
