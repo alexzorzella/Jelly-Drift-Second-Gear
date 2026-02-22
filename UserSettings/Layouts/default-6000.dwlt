@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 157
+  controlID: 136
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -244,7 +244,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 2102.6667
-    height: 904.6667
+    height: 881.3333
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 410.66666
-    height: 904.6667
+    height: 881.3333
   m_MinSize: {x: 201, y: 226}
   m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 17}
@@ -294,7 +294,7 @@ MonoBehaviour:
     x: 410.66666
     y: 0
     width: 1692.0001
-    height: 904.6667
+    height: 881.3333
   m_MinSize: {x: 202, y: 226}
   m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 16}
@@ -321,9 +321,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 904.6667
+    y: 881.3333
     width: 2102.6667
-    height: 436.6667
+    height: 460.00006
   m_MinSize: {x: 231, y: 276}
   m_MaxSize: {x: 10001, y: 10026}
   m_ActualView: {fileID: 21}
@@ -434,7 +434,7 @@ MonoBehaviour:
     x: 411.66666
     y: 24
     width: 1690.0001
-    height: 878.6667
+    height: 855.3333
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -489,22 +489,22 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 1690.0001
-      height: 857.6667
-    m_Scale: {x: 0.59560186, y: 0.59560186}
-    m_Translation: {x: 845, y: 428.83334}
+      height: 834.3333
+    m_Scale: {x: 0.57939816, y: 0.57939816}
+    m_Translation: {x: 845.00006, y: 417.1667}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1418.733
+      x: -1458.41
       y: -720
-      width: 2837.466
+      width: 2916.82
       height: 1440
     m_MinimalGUI: 1
-  m_defaultScale: 0.59560186
-  m_LastWindowPixelSize: {x: 1690.0001, y: 878.6667}
+  m_defaultScale: 0.57939816
+  m_LastWindowPixelSize: {x: 1690.0001, y: 855.3333}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -536,7 +536,7 @@ MonoBehaviour:
     x: 0
     y: 24
     width: 409.66666
-    height: 878.6667
+    height: 855.3333
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -603,7 +603,7 @@ MonoBehaviour:
     x: 410.6667
     y: 78.66667
     width: 1690.0001
-    height: 746.6667
+    height: 878.6667
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1130,9 +1130,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 1.9589078, y: -4.228183, z: 9.982595}
+    m_Target: {x: 10.978031, y: -9.751798, z: 16.127407}
     speed: 2
-    m_Value: {x: 1.9589078, y: -4.228183, z: 9.982595}
+    m_Value: {x: 10.978031, y: -9.751798, z: 16.127407}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1178,13 +1178,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.1640857, y: -0.70217234, z: 0.17170933, w: 0.6712345}
+    m_Target: {x: 0.3507597, y: -0.043915387, z: 0.016505236, w: 0.9352954}
     speed: 2
-    m_Value: {x: -0.1640857, y: 0.7021724, z: -0.17170933, w: -0.6712345}
+    m_Value: {x: -0.3507597, y: 0.043915387, z: -0.016505236, w: -0.93529546}
   m_Size:
-    m_Target: 5.263789
+    m_Target: 12.12556
     speed: 2
-    m_Value: 5.263789
+    m_Value: 12.12556
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1333,9 +1333,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 928.6667
+    y: 905.3333
     width: 2101.6667
-    height: 410.6667
+    height: 434.00006
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1503,7 +1503,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 44874
+  m_LastSelectedObjectID: 44712
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52

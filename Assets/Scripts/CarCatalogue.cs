@@ -50,6 +50,11 @@ public static class CarCatalogue {
             WithDriftSpecs(1.2F).
             WithPhysicsSpecs(mass: 1200).
             WithMaterials("Midnight").Build(),
+        new CarData.Builder(20, "Mom Van", "van").
+            WithPhysicsSpecs(mass: 1200).
+            WithSuspensionSpecs(0.4F).
+            WithCarSpecs(engineForce: 3100, stability: 0.1F).
+            WithDriftSpecs(1.3F).Build(),
         new CarData.Builder(30, "Accurate Integral", "integra").
             WithCarSpecs(3030, stability: 0.7F).
             WithDriftSpecs(1.4F).
