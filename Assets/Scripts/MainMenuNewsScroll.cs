@@ -21,7 +21,7 @@ public class MainMenuNewsScroll : MonoBehaviour {
             }
 
             finalMessage += 
-                $"On {record.GetFormattedDate()}, {record.GetUsername()} achieved a time of {TimeEntry.FormatMs(record.GetTimeMs())}. \"{record.GetMessage()}\" ";
+                $"On {record.GetFormattedDate()}, {record.GetUsername()} achieved a time of {TimeEntry.FormatMs(record.GetTimeMs())}. \"{record.GetMessage()}\" • ";
             
             stageIds.Add(record.GetStageId());
         }
