@@ -36,11 +36,11 @@ public class StartText : MonoBehaviour, StartListener {
             //     overlayText.alpha = value;
             // });
         } else if (countdown <= 0) {
-            // canvasGroup.alpha = 0;
-
-            LeanTween.value(gameObject, 1, 10, 10F).setOnUpdate((value) => {
+            LeanTween.value(gameObject, 1, 22, 0.5F).setOnUpdate((value) => {
                 cutoutText.transform.localScale = Vector3.one * value;
-            }).setEase(LeanTweenType.easeOutExpo);
+            }).setEase(LeanTweenType.easeInExpo);
+            
+            // canvasGroup.alpha = 0;
             
             // LeanTween.value(gameObject, 1, 0, 15F).setOnUpdate((value) => {
             //      canvasGroup.alpha = value;
