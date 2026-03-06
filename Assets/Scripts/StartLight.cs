@@ -3,7 +3,6 @@
 public class StartLight : MonoBehaviour, StartListener {
     Material[] colors;
     MultiAudioSource beepSource;
-    int c;
 
     MeshRenderer rend;
 
@@ -36,10 +35,10 @@ public class StartLight : MonoBehaviour, StartListener {
     }
 
     public void NotifyCountdownUpdated(int countdown) {
-        beepSource.SetPitch(1f + 4 - c * 0.5f / 3f);
+        beepSource.SetPitch(1f + 4 - countdown * 0.5f / 3f);
         beepSource.Play();
         
-        SetColor(4 - c);
+        SetColor(4 - countdown);
     }
 
     public void NotifyStartRace() {
