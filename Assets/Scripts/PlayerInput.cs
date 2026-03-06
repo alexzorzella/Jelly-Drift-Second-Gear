@@ -1,15 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour {
+public class PlayerInput : MonoBehaviour, StartListener {
     public Car car;
 
     PXN pxn;
 
+    bool started = false;
+
+    void Start() {
+        FindFirstObjectByType<StartHandler>().RegsiterListener(this);
+    }
+
     public void Initialize(Car car) {
         this.car = car;
-        
-        pause = FindFirstObjectByType<Pause>();
         
         pxn = new PXN();
         
@@ -35,6 +40,10 @@ public class PlayerInput : MonoBehaviour {
     }
 
     void ThrottleKey(InputAction.CallbackContext context) {
+        if (!started) {
+            return;
+        }
+        
         if (context.action.IsPressed()) {
             car.throttle = 1;
         } else {
@@ -101,43 +110,21 @@ public class PlayerInput : MonoBehaviour {
     void Fifth(InputAction.CallbackContext context) { car.SetGear(4); }
     void Reverse(InputAction.CallbackContext context) { car.SetGear(5); }
 
-    Pause pause;
-    
-    // void Restart_BucketBrigade(InputAction.CallbackContext context) {
-    //     pause.RestartGame();
-    // }
-
-    private void OnEnable() {
+    void OnEnable() {
         if (pxn != null) {
             pxn.Enable();
         }
     }
 
-    private void OnDisable() {
+    void OnDisable() {
         pxn.Disable();
     }
-}
 
-// using UnityEngine;
-//
-// public class PlayerInput : MonoBehaviour {
-//     Car car;
-//
-//     public void Initialize(Car car) {
-//         this.car = car;
-//     }
-//     
-//     void Update() {
-//         if (car == null || (GameController.Instance && !GameController.Instance.playing)) {
-//             return;
-//         }
-//
-//         GetPlayerInput();
-//     }
-//
-//     void GetPlayerInput() {
-//         car.steering = Input.GetAxisRaw("Horizontal");
-//         car.throttle = Input.GetAxis("Vertical");
-//         car.braking = Input.GetButton("Breaking");
-//     }
-// }
+    public void NotifyCountdownUpdated(int countdown) {
+        
+    }
+
+    public void NotifyStartRace() {
+        started = true;
+    }
+}

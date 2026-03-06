@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StartHandler : MonoBehaviour {
-    readonly List<StartListener> listeners;
+    readonly List<StartListener> listeners = new();
     
     int countdown = 3;
 
@@ -20,6 +20,10 @@ public class StartHandler : MonoBehaviour {
 
     void NotifyListeners() {
         foreach (var listener in listeners) {
+            if (listener == null) {
+                continue;
+            }
+            
             if (countdown >= 0) {
                 listener.NotifyCountdownUpdated(countdown);
             } else {
