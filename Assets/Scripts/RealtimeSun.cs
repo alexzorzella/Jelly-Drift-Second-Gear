@@ -61,13 +61,17 @@ public class RealtimeSun : MonoBehaviour {
 
             float currentLightIntensity = !isNight ? lightIntensity : 0;
             
-            LeanTween.value(colorAdjustments.postExposure.value, currentPostExposure, sunlightTweenSpeed).setOnUpdate((value) => { colorAdjustments.postExposure.value = value; });
-            LeanTween.value(lightSource.intensity, currentLightIntensity, postExposureTweenSpeed).setOnUpdate((value) => { lightSource.intensity = value; });
+            LeanTween.value(gameObject, colorAdjustments.postExposure.value, currentPostExposure, sunlightTweenSpeed).setOnUpdate((value) => { colorAdjustments.postExposure.value = value; });
+            LeanTween.value(gameObject, lightSource.intensity, currentLightIntensity, postExposureTweenSpeed).setOnUpdate((value) => { lightSource.intensity = value; });
             
             foreach (var light in nighttimeLights) {
                 int nighttimeLightIntensity = isNight ? 1000 : 0;
-                LeanTween.value(light.intensity, nighttimeLightIntensity, lightsTweenSpeed).setOnUpdate((value) => { light.intensity = value; });
+                LeanTween.value(gameObject, light.intensity, nighttimeLightIntensity, lightsTweenSpeed).setOnUpdate((value) => { light.intensity = value; });
             }
         }
+    }
+
+    void OnDestroy() {
+        LeanTween.cancel(gameObject);
     }
 }
