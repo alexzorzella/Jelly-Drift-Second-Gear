@@ -38,7 +38,7 @@ public class StartLight : MonoBehaviour, StartListener {
         beepSource.SetPitch(1f + 4 - countdown * 0.5f / 3f);
         beepSource.Play();
         
-        SetColor(4 - countdown);
+        SetColor(2 - countdown);
     }
 
     public void NotifyStartRace() {
