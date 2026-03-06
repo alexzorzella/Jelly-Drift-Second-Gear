@@ -38,7 +38,7 @@ public class StartText : MonoBehaviour, StartListener {
         } else if (countdown <= 0) {
             LeanTween.value(gameObject, 1, 22, 0.5F).setOnUpdate((value) => {
                 cutoutText.transform.localScale = Vector3.one * value;
-            }).setEase(LeanTweenType.easeInExpo);
+            }).setEase(LeanTweenType.easeInCubic);
             
             // canvasGroup.alpha = 0;
             
