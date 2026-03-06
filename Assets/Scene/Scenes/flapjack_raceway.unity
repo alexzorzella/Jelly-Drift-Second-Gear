@@ -2762,7 +2762,6 @@ GameObject:
   - component: {fileID: 600}
   - component: {fileID: 1318}
   - component: {fileID: 955}
-  - component: {fileID: 1572}
   - component: {fileID: 1922}
   m_Layer: 0
   m_Name: startLight
@@ -32765,103 +32764,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256}
   m_Enabled: 1
---- !u!82 &1572
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 26825502d6dd8fa4c9e46048c145920b, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.8
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3333333
-      outWeight: 0.3333333
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3333333
-      outWeight: 0.3333333
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3333333
-      outWeight: 0.3333333
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3333333
-      outWeight: 0.3333333
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3333333
-      outWeight: 0.3333333
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!82 &1573
 AudioSource:
   m_ObjectHideFlags: 0
@@ -44281,8 +44183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a726f9a9b99cd4095d50c9c52ee397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors: []
-  audio: {fileID: 1572}
 --- !u!114 &1923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44639,8 +44539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a726f9a9b99cd4095d50c9c52ee397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors: []
-  audio: {fileID: 0}
 --- !u!114 &1942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47652,20 +47550,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5775c0ba20d03a40a789e519cbb9093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 1903}
-  pbTimer: {fileID: 1902}
-  mapName: {fileID: 1901}
-  newBest: {fileID: 1900}
   victoryText: {fileID: 1869}
-  timePanel: {fileID: 373}
   racePanel: {fileID: 423}
-  progressTime: {fileID: 1932}
-  progressRace: {fileID: 2106}
-  unlockManager: {fileID: 2089}
-  stars:
-  - {fileID: 2128}
-  - {fileID: 2118}
-  - {fileID: 2119}
+  leaderboard: {fileID: 0}
 --- !u!114 &2053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48130,7 +48017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5187f586af0250d42b666eba3b2d07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splitPos: {fileID: 1815}
+  splitText: {fileID: 0}
 --- !u!114 &2072
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class StartLight : MonoBehaviour {
-    public Material[] colors;
-    public AudioSource audio;
+public class StartLight : MonoBehaviour, StartListener {
+    Material[] colors;
+    MultiAudioSource beepSource;
     int c;
 
     MeshRenderer rend;
@@ -11,20 +11,10 @@ public class StartLight : MonoBehaviour {
         rend = GetComponent<MeshRenderer>();
         colors = rend.materials;
         SetColor(-1);
-        Invoke("NextColor", GameController.Instance.startTime / 3f);
-    }
 
-    void NextColor() {
-        SetColor(c);
-        if (audio) {
-            audio.pitch = 1f + c * 0.5f / 3f;
-            audio.Play();
-        }
-
-        c++;
-        if (c < 3) {
-            Invoke("NextColor", GameController.Instance.startTime / 3f);
-        }
+        beepSource = MultiAudioSource.FromResource(gameObject, "beep");
+        
+        FindFirstObjectByType<StartHandler>().RegsiterListener(this, false);
     }
 
     void SetColor(int c) {
@@ -43,5 +33,16 @@ public class StartLight : MonoBehaviour {
         }
 
         rend.materials = array;
+    }
+
+    public void NotifyCountdownUpdated(int countdown) {
+        beepSource.SetPitch(1f + 4 - c * 0.5f / 3f);
+        beepSource.Play();
+        
+        SetColor(4 - c);
+    }
+
+    public void NotifyStartRace() {
+        
     }
 }
