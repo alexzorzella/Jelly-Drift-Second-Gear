@@ -34,13 +34,22 @@ public class RealtimeSun : MonoBehaviour {
 
         rotY = transform.rotation.eulerAngles.y;
         rotZ = transform.rotation.eulerAngles.z;
-
-        foreach (var light in nighttimeLights) {
-            light.intensity = 0;
-        }
+        
+        isNight = UpdateTime();
+        UpdateIntensities(true);
     }
 
     void Update() {
+        var night = UpdateTime();
+
+        if (isNight != night) {
+            isNight = night;
+
+            UpdateIntensities();
+        }
+    }
+
+    bool UpdateTime() {
         DateTime now = DateTime.Now;
         TimeSpan timeOfDay = now.TimeOfDay;
         int secondsPassedToday = (int)timeOfDay.TotalSeconds;
@@ -52,22 +61,21 @@ public class RealtimeSun : MonoBehaviour {
         transform.rotation = Quaternion.Euler(sunAngle, rotY, rotZ);
 
         bool night = sunAngle > 183 && sunAngle < 357;
+        return night;
+    }
 
-        if (isNight != night) {
-            isNight = night;
-            
-            float currentPostExposure = isNight ? nightPostExposureFactor : 0;
-            currentPostExposure = Mathf.Clamp(currentPostExposure, nightPostExposureFactor, 0);
+    void UpdateIntensities(bool instant = false) {
+        float currentPostExposure = isNight ? nightPostExposureFactor : 0;
+        currentPostExposure = Mathf.Clamp(currentPostExposure, nightPostExposureFactor, 0);
 
-            float currentLightIntensity = !isNight ? lightIntensity : 0;
+        float currentLightIntensity = !isNight ? lightIntensity : 0;
             
-            LeanTween.value(gameObject, colorAdjustments.postExposure.value, currentPostExposure, sunlightTweenSpeed).setOnUpdate((value) => { colorAdjustments.postExposure.value = value; });
-            LeanTween.value(gameObject, lightSource.intensity, currentLightIntensity, postExposureTweenSpeed).setOnUpdate((value) => { lightSource.intensity = value; });
+        LeanTween.value(gameObject, colorAdjustments.postExposure.value, currentPostExposure, instant ? 1 : sunlightTweenSpeed).setOnUpdate((value) => { colorAdjustments.postExposure.value = value; });
+        LeanTween.value(gameObject, lightSource.intensity, currentLightIntensity, instant ? 1 : postExposureTweenSpeed).setOnUpdate((value) => { lightSource.intensity = value; });
             
-            foreach (var light in nighttimeLights) {
-                int nighttimeLightIntensity = isNight ? 1000 : 0;
-                LeanTween.value(gameObject, light.intensity, nighttimeLightIntensity, lightsTweenSpeed).setOnUpdate((value) => { light.intensity = value; });
-            }
+        foreach (var light in nighttimeLights) {
+            int nighttimeLightIntensity = isNight ? 1000 : 0;
+            LeanTween.value(gameObject, light.intensity, nighttimeLightIntensity, instant ? 1 : lightsTweenSpeed).setOnUpdate((value) => { light.intensity = value; });
         }
     }
 
