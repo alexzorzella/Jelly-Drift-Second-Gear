@@ -1,14 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Car : MonoBehaviour {
+public class Car : MonoBehaviour, StartListener {
     int gear = 3;
 
-    public void SetGear(int gear) {
-        this.gear = gear;
+    bool started = false;
+
+    void Start() {
+        FindFirstObjectByType<StartHandler>().RegsiterListener(this);
     }
+    
+    public void NotifyCountdownUpdated(int countdown) { }
+    public void NotifyStartRace() { started = true; }
+    
+    public void SetGear(int gear) { this.gear = gear; }
     
     float overrideEngineForce = 0;
 
@@ -149,6 +154,10 @@ public class Car : MonoBehaviour {
     }
 
     void Movement() {
+        if (!started) {
+            return;
+        }
+        
         var linearVelocity = XZVector(rb.linearVelocity);
         var inverseTransformDir = transform.InverseTransformDirection(XZVector(rb.linearVelocity));
         

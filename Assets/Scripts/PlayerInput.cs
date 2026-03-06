@@ -2,17 +2,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour, StartListener {
+public class PlayerInput : MonoBehaviour {
     public Car car;
 
     PXN pxn;
-
-    bool started = false;
-
-    void Start() {
-        FindFirstObjectByType<StartHandler>().RegsiterListener(this);
-    }
-
+    
     public void Initialize(Car car) {
         this.car = car;
         
@@ -40,10 +34,6 @@ public class PlayerInput : MonoBehaviour, StartListener {
     }
 
     void ThrottleKey(InputAction.CallbackContext context) {
-        if (!started) {
-            return;
-        }
-        
         if (context.action.IsPressed()) {
             car.throttle = 1;
         } else {
@@ -118,13 +108,5 @@ public class PlayerInput : MonoBehaviour, StartListener {
 
     void OnDisable() {
         pxn.Disable();
-    }
-
-    public void NotifyCountdownUpdated(int countdown) {
-        
-    }
-
-    public void NotifyStartRace() {
-        started = true;
     }
 }
