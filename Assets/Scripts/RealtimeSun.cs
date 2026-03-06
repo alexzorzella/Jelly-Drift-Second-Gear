@@ -69,13 +69,23 @@ public class RealtimeSun : MonoBehaviour {
         currentPostExposure = Mathf.Clamp(currentPostExposure, nightPostExposureFactor, 0);
 
         float currentLightIntensity = !isNight ? lightIntensity : 0;
-            
-        LeanTween.value(gameObject, colorAdjustments.postExposure.value, currentPostExposure, instant ? 1 : sunlightTweenSpeed).setOnUpdate((value) => { colorAdjustments.postExposure.value = value; });
-        LeanTween.value(gameObject, lightSource.intensity, currentLightIntensity, instant ? 1 : postExposureTweenSpeed).setOnUpdate((value) => { lightSource.intensity = value; });
-            
-        foreach (var light in nighttimeLights) {
-            int nighttimeLightIntensity = isNight ? 1000 : 0;
-            LeanTween.value(gameObject, light.intensity, nighttimeLightIntensity, instant ? 1 : lightsTweenSpeed).setOnUpdate((value) => { light.intensity = value; });
+
+        int nighttimeLightIntensity = isNight ? 1000 : 0;
+
+        if (instant) {
+            colorAdjustments.postExposure.value = currentPostExposure;
+            lightSource.intensity = currentLightIntensity;
+                
+            foreach (var light in nighttimeLights) {
+                light.intensity = nighttimeLightIntensity;
+            }
+        } else {
+            LeanTween.value(gameObject, colorAdjustments.postExposure.value, currentPostExposure, sunlightTweenSpeed).setOnUpdate((value) => { colorAdjustments.postExposure.value = value; });
+            LeanTween.value(gameObject, lightSource.intensity, currentLightIntensity, postExposureTweenSpeed).setOnUpdate((value) => { lightSource.intensity = value; });
+                
+            foreach (var light in nighttimeLights) {
+                LeanTween.value(gameObject, light.intensity, nighttimeLightIntensity, lightsTweenSpeed).setOnUpdate((value) => { light.intensity = value; });
+            }
         }
     }
 
