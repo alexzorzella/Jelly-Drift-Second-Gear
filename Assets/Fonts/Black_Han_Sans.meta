@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Fonts/Black_Han_Sans.meta
 guid: f6c253c80207fb84fb3f859aefb8bd85
+========
+guid: 07897acf4bfff75408892778ff5dd8fc
+>>>>>>>> 0066ff5 (Upgraded to urp):Assets/Shaders/Uber Stylized Water.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

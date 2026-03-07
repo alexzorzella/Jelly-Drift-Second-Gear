@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Gnu_Unifont_Full.asset.meta
 guid: 992216fb288cf844e8e6c97022058bd6
+========
+guid: 37fb3073247b6094790e84a8703a8e02
+>>>>>>>> 0066ff5 (Upgraded to urp):Assets/Shaders/Uber Stylized Water/DefaultVolumeProfile.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
