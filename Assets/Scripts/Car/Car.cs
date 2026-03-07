@@ -7,7 +7,7 @@ public class Car : MonoBehaviour, StartListener {
     bool started = false;
 
     void Start() {
-        FindFirstObjectByType<StartHandler>().RegsiterListener(this);
+        FindFirstObjectByType<StartHandler>()?.RegsiterListener(this);
     }
     
     public void NotifyCountdownUpdated(int countdown) { }
