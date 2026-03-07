@@ -31,20 +31,10 @@ public class StartText : MonoBehaviour, StartListener {
             overlayText.alpha = 1;
             Color color = backgroundImage.color;
             backgroundImage.color = new Color(color.r, color.g, color.b, 0);
-            
-            // LeanTween.value(gameObject, 1, 0, 1F).setOnUpdate((value) => {
-            //     overlayText.alpha = value;
-            // });
         } else if (countdown <= 0) {
             LeanTween.value(gameObject, 1, 22, 0.5F).setOnUpdate((value) => {
                 cutoutText.transform.localScale = Vector3.one * value;
             }).setEase(LeanTweenType.easeInCubic);
-            
-            // canvasGroup.alpha = 0;
-            
-            // LeanTween.value(gameObject, 1, 0, 15F).setOnUpdate((value) => {
-            //      canvasGroup.alpha = value;
-            // }).setEase(LeanTweenType.easeOutExpo);
         }
     }
 
