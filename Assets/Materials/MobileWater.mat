@@ -128,7 +128,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0, g: 0.5870807, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.5870807, b: 1, a: 1}
     - _DepthGradientDeep: {r: 0, g: 0.6310754, b: 1, a: 0.9411765}
     - _DepthGradientShallow: {r: 0, g: 0.4680726, b: 0.772549, a: 1}
     - _EdgeColor: {r: 1, g: 1, b: 1, a: 1}

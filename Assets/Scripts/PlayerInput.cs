@@ -1,15 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour {
     public Car car;
 
     PXN pxn;
-
+    
     public void Initialize(Car car) {
         this.car = car;
-        
-        pause = FindFirstObjectByType<Pause>();
         
         pxn = new PXN();
         
@@ -101,43 +100,13 @@ public class PlayerInput : MonoBehaviour {
     void Fifth(InputAction.CallbackContext context) { car.SetGear(4); }
     void Reverse(InputAction.CallbackContext context) { car.SetGear(5); }
 
-    Pause pause;
-    
-    // void Restart_BucketBrigade(InputAction.CallbackContext context) {
-    //     pause.RestartGame();
-    // }
-
-    private void OnEnable() {
+    void OnEnable() {
         if (pxn != null) {
             pxn.Enable();
         }
     }
 
-    private void OnDisable() {
+    void OnDisable() {
         pxn.Disable();
     }
 }
-
-// using UnityEngine;
-//
-// public class PlayerInput : MonoBehaviour {
-//     Car car;
-//
-//     public void Initialize(Car car) {
-//         this.car = car;
-//     }
-//     
-//     void Update() {
-//         if (car == null || (GameController.Instance && !GameController.Instance.playing)) {
-//             return;
-//         }
-//
-//         GetPlayerInput();
-//     }
-//
-//     void GetPlayerInput() {
-//         car.steering = Input.GetAxisRaw("Horizontal");
-//         car.throttle = Input.GetAxis("Vertical");
-//         car.braking = Input.GetButton("Breaking");
-//     }
-// }

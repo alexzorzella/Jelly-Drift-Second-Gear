@@ -16772,7 +16772,7 @@ GameObject:
   - component: {fileID: 8985463838698323080}
   - component: {fileID: 8995318164211775526}
   - component: {fileID: 9004544102909305562}
-  - component: {fileID: 8953424906378598999}
+  - component: {fileID: 3682255263258307403}
   m_Layer: 10
   m_Name: skyline
   m_TagString: Untagged
@@ -16866,7 +16866,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8953424906378598999
+--- !u!64 &3682255263258307403
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

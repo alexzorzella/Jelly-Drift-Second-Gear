@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public static class CarCatalogue {
     static int _selectedCar = 0;
@@ -42,6 +43,18 @@ public static class CarCatalogue {
             WithSuspensionSpecs(0.45F).
             WithCarSpecs(stability: 0).
             WithDriftSpecs(1.2F).
+            WithMaterials("Midnight").Build(),
+        new CarData.Builder(20, "Automobile").
+            WithSuspensionSpecs(0.45F).
+            WithCarSpecs(engineForce: 3200, stability: 0).
+            WithDriftSpecs(1.2F).
+            WithPhysicsSpecs(mass: 1200).
+            WithMaterials("Midnight").Build(),
+        new CarData.Builder(20, "Mom Van", "van").
+            WithSuspensionSpecs(0.45F).
+            WithCarSpecs(stability: 0).
+            WithDriftSpecs(1.8F).
+            WithPhysicsSpecs(mass: 1100).
             WithMaterials("Midnight").Build(),
         new CarData.Builder(30, "Accurate Integral", "integra").
             WithCarSpecs(3030, stability: 0.7F).
