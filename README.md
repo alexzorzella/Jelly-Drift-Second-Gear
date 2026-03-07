@@ -1,7 +1,7 @@
-![Unity Version](https://img.shields.io/badge/dynamic/yaml?url=https://raw.githubusercontent.com/alexzorzella/Jelly-Drift/main/ProjectSettings/ProjectVersion.txt&query=m_EditorVersion&label=Unity&color=222c37&logo=unity)
-![Latest Release](https://img.shields.io/github/v/release/alexzorzella/Jelly-Drift)
-[![Unity Build](https://github.com/alexzorzella/Jelly-Drift/actions/workflows/unity-build.yml/badge.svg)](https://github.com/alexzorzella/Jelly-Drift/actions/workflows/unity-build.yml)
-![Issues](https://img.shields.io/github/issues/alexzorzella/Jelly-Drift)<br>
+![Unity Version](https://img.shields.io/badge/dynamic/yaml?url=https://raw.githubusercontent.com/alexzorzella/Jelly-Drift-Second-Gear/main/ProjectSettings/ProjectVersion.txt&query=m_EditorVersion&label=Unity&color=222c37&logo=unity)
+![Latest Release](https://img.shields.io/github/v/release/alexzorzella/Jelly-Drift-Second-Gear)
+[![Unity Build](https://github.com/alexzorzella/Jelly-Drift/actions/workflows/unity-build.yml/badge.svg)](https://github.com/alexzorzella/Jelly-Drift-Second-Gear/actions/workflows/unity-build.yml)
+![Issues](https://img.shields.io/github/issues/alexzorzella/Jelly-Drift-Second-Gear)<br>
 
 Jelly Drift: Second Gear is an open-source mod of [Jelly Drift](https://danidev.itch.io/jelly-drift).<br>
 The game is heavily altered from the original:
