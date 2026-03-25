@@ -1,0 +1,13 @@
+[project]
+name = "training"
+version = "0.1.0"
+description = "ML-Agents training scripts for Jelly Drift Second Gear"
+readme = "README.md"
+# mlagents requires Python 3.8–3.10; 3.13 is not supported
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "mlagents",
+]
+
+[project.scripts]
+train = "main:train"
