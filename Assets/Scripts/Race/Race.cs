@@ -17,7 +17,7 @@ public class Race : MonoBehaviour {
 
         Car enemyCar = enemyCarObject.GetComponent<Car>();
         
-        enemyCar.Initialize(CarCatalogue.GetSelectedOpponentCarData(), carType: CarType.CPU);
+        enemyCar.Initialize(CarCatalogue.GetSelectedOpponentCarData(), carType: CarType.AGENT);
     }
 
     void Start() {
