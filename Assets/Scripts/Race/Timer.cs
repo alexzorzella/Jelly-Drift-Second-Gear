@@ -25,7 +25,6 @@ public class Timer : MonoBehaviour {
         }
 
         timer += Time.deltaTime;
-        AutoSplitterData.inGameTime = timer;
         text.text = GetFormattedTime(timer);
     }
 
