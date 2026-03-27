@@ -12,24 +12,20 @@ public class CarAi : MonoBehaviour {
     
     public float xOffset;
     public float speedSteerMultiplier = 1f;
-    public float steerMultiplier = 1f;
     public int maxTurnSpeed = 50;
-    readonly int maxLookAhead = 6;
-    readonly float recoverTime = 1.5f;
-    readonly float slowdownM = 5f;
-    readonly float speedAdjustMultiplier = 5f;
-    readonly float speedupM = 15f;
-    readonly int turnLookAhead = 6;
+    const int maxLookAhead = 6;
+    const float recoverTime = 1.5f;
+    const float slowdownM = 5f;
+    const float speedAdjustMultiplier = 5f;
+    const float speedupM = 15f;
+    const int turnLookAhead = 6;
     Car car;
     int currentDriftNode;
     int currentNode;
     int difficulty;
     LineRenderer line;
-    int lookAhead = 4;
-    float maxOffset = 0.36f;
     int nextTurnLength;
     int nextTurnStart;
-    float roadWidth = 0.4f;
     int turnDir;
 
     public void Initialize(Car car) {
