@@ -17,7 +17,6 @@ public class SliderSettingCycle : ItemCycle {
     public override void Cycle(int n) {
         base.Cycle(n);
         UpdateOptions();
-        settings.UpdateSettings();
     }
 
     public void UpdateOptions() {

@@ -7,7 +7,7 @@ public class MusicController : MonoBehaviour {
     void Start() {
         DontDestroyOnLoad(gameObject);
 
-        music = MultiAudioSource.FromResource(gameObject, "synthwave", loop: true);
+        music = MultiAudioSource.FromResource(gameObject, "synthwave", audioMixer: "Music", loop: true);
         
         UpdateVolume(SaveState.i.musicVolume);
         
