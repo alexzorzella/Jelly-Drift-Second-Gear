@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class AnimateUI : MonoBehaviour {
+public class AnimateUi : MonoBehaviour {
     public float rotSpeed;
     public float rotStrength;
     public float rotSmooth;
