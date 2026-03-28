@@ -20,6 +20,7 @@ public class CycleMenu : MonoBehaviour {
         cycleText = new List<TextMeshProUGUI>();
         for (var i = 0; i < transform.childCount; i++) {
             var component = transform.GetChild(i).GetComponent<ItemCycle>();
+            
             if (component) {
                 cycles.Add(component);
                 var componentInChildren = component.GetComponentInChildren<TextMeshProUGUI>();
