@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class RandomBGColor : MonoBehaviour {
+public class RandomBgColor : MonoBehaviour {
     readonly Color[] colors = {
         new(1f, 0.65f, 0.4f),
         new(1f, 0.4f, 0.41f),
@@ -11,10 +11,10 @@ public class RandomBGColor : MonoBehaviour {
         new(0.35f, 1f, 0.48f)
     };
 
-    Camera camera;
+    Camera cam;
 
     void Awake() {
-        camera = GetComponentInChildren<Camera>();
+        cam = GetComponentInChildren<Camera>();
     }
 
     void OnEnable() {
@@ -23,6 +23,6 @@ public class RandomBGColor : MonoBehaviour {
 
     void RandomColor() {
         var backgroundColor = colors[Random.Range(0, colors.Length)];
-        camera.backgroundColor = backgroundColor;
+        cam.backgroundColor = backgroundColor;
     }
 }

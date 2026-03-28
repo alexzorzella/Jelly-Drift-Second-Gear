@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class SaveState : MonoBehaviour {
+﻿public class SaveState {
     public int quality { get; set; }
     public int dof { get; set; }
     public int motionBlur { get; set; }
