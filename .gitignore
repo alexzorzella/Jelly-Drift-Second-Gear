@@ -61,3 +61,8 @@ crashlytics-build.properties
 .idea/
 .vscode
 .vsconfig
+
+# ML-Agents training output
+training/results/
+training/.venv/
+training/.python-version
