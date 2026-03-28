@@ -7,7 +7,6 @@ public class AnimateUI : MonoBehaviour {
     public float scaleSpeed;
     public float scaleStrength;
     public float scaleSmooth;
-    float defaultRot;
 
     Vector3 defaultScale;
     Vector3 desiredScale;
@@ -17,7 +16,6 @@ public class AnimateUI : MonoBehaviour {
 
     void Awake() {
         defaultScale = transform.localScale;
-        defaultRot = 0f;
         desiredScale = defaultScale;
     }
 
