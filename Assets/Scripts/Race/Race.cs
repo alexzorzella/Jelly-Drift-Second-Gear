@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
 public class Race : MonoBehaviour {
-    public GameObject enemyCarPrefab;
-    GameController gameController;
+    public GameController gameController;
     public GameObject enemyCarObject { get; set; }
 
     void Awake() {
@@ -18,11 +17,7 @@ public class Race : MonoBehaviour {
 
         Car enemyCar = enemyCarObject.GetComponent<Car>();
         
-        enemyCar.Initialize(CarCatalogue.GetSelectedOpponentCarData(), true);
-        
-        CarAi carAi = enemyCarObject.AddComponent<CarAi>();
-        carAi.Initialize(enemyCar);
-        carAi.SetPath(gameController.path);
+        enemyCar.Initialize(CarCatalogue.GetSelectedOpponentCarData(), carType: CarType.CPU);
     }
 
     void Start() {

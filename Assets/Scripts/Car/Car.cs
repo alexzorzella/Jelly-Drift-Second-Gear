@@ -1,6 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+public enum CarType {
+    PLAYER,
+    CPU,
+    AGENT,
+    DISPLAY
+}
+
 public class Car : MonoBehaviour, StartListener {
     int gear = 3;
 
@@ -30,8 +37,8 @@ public class Car : MonoBehaviour, StartListener {
     public CarData GetCarData() {
         return carData;
     }
-    
-    bool isCpu;
+
+    CarType carType;
     
     Collider carCollider;
     Vector3 centerOfGravity;
@@ -53,32 +60,25 @@ public class Car : MonoBehaviour, StartListener {
     MultiAudioSource accelerationSource;
     MultiAudioSource decelerationSource;
     MultiAudioSource horn;
-
-    bool isDisplayCar = false;
     
-    public void Initialize(CarData carData, bool isCpu = false, bool isDisplayCar = false, bool isAgent = false) {
-        // ML
-
-        if (isAgent) {
-            // gameObject.AddComponent<>();
-        }
-        
-        //
-        
+    public void Initialize(CarData carData, CarType carType = CarType.PLAYER) {
         this.carData = carData;
-        this.isCpu = isCpu;
-        this.isDisplayCar = isDisplayCar;
-
+        this.carType = carType;
+        
         gameObject.name = carData.GetCarName();
 
         GameObject carModel = Instantiate(carData.GetModel(), transform);
         carModel.transform.localPosition = Vector3.zero;
-
-        if (!isCpu && !isAgent) {
-            gameObject.AddComponent<PlayerInput>().Initialize(this);
-        }
         
-        // Materials are set here
+        if (carType is CarType.PLAYER) {
+            gameObject.AddComponent<PlayerInput>().Initialize(this);
+        } else if (carType is CarType.CPU) {
+            CarCpu carCPU = gameObject.AddComponent<CarCpu>();
+            carCPU.Initialize(this);
+            carCPU.SetPath(FindFirstObjectByType<Race>().gameController.path);
+        } else if (carType is CarType.AGENT) {
+            gameObject.AddComponent<CarAgent>().Initialize(this, FindFirstObjectByType<Race>().gameController.path);
+        }
 
         centerOfMass = carModel.transform.Find("CenterOfMass");
         centerOfMass.transform.SetParent(transform);
@@ -257,8 +257,13 @@ public class Car : MonoBehaviour, StartListener {
     }
 
     float GetEngineForce() {
-        float result = isCpu ? overrideEngineForce : carData.GetEngineForce();
-        return result;
+        if (carType == CarType.PLAYER) {
+            return carData.GetEngineForce();
+        } else if (carType == CarType.CPU) {
+            return overrideEngineForce;
+        }
+
+        return 0;
     }
 
     void StandStill() {
