@@ -56,7 +56,15 @@ public class Car : MonoBehaviour, StartListener {
 
     bool isDisplayCar = false;
     
-    public void Initialize(CarData carData, bool isCpu = false, bool isDisplayCar = false) {
+    public void Initialize(CarData carData, bool isCpu = false, bool isDisplayCar = false, bool isAgent = false) {
+        // ML
+
+        if (isAgent) {
+            // gameObject.AddComponent<>();
+        }
+        
+        //
+        
         this.carData = carData;
         this.isCpu = isCpu;
         this.isDisplayCar = isDisplayCar;
@@ -66,7 +74,7 @@ public class Car : MonoBehaviour, StartListener {
         GameObject carModel = Instantiate(carData.GetModel(), transform);
         carModel.transform.localPosition = Vector3.zero;
 
-        if (!isCpu) {
+        if (!isCpu && !isAgent) {
             gameObject.AddComponent<PlayerInput>().Initialize(this);
         }
         
