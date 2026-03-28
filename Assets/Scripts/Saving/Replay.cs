@@ -14,7 +14,7 @@ public class Replay : MonoBehaviour {
     float replayDeltaTime;
 
     void Start() {
-        if (GameState.i.gamemode != Gamemode.TimeTrial || GameState.i.ghost == GhostCycle.Ghost.Off) {
+        if (GameState.i.gameMode != GameMode.TIME_TRIAL || GameState.i.ghost == GhostCycle.Ghost.Off) {
             Destroy(this);
             return;
         }
@@ -49,11 +49,6 @@ public class Replay : MonoBehaviour {
 
         var ghostCarObject = Instantiate(ResourceLoader.LoadObject("Car"));
         ghostCarObject.GetComponent<Car>().Initialize(CarCatalogue.GetCarAtIndex(array[0]));
-        
-        CarSkin skin = ghostCarObject.GetComponent<CarSkin>();
-        if (skin != null) {
-            skin.SetSkin(array[1]);
-        }
         
         while ((text2 = streamReader.ReadLine()) != null) {
             text2 = text2.Replace("(", string.Empty).Replace(")", string.Empty);
@@ -115,11 +110,6 @@ public class Replay : MonoBehaviour {
         var ghostCarObject = Instantiate(ResourceLoader.LoadObject("Car"));
         ghostCarObject.GetComponent<Car>().Initialize(CarCatalogue.GetCarAtIndex(array2[0]));
 
-        CarSkin skin = ghostCarObject.GetComponent<CarSkin>();
-        if (skin != null) {
-            skin.SetSkin(array2[1]);  
-        }
-        
         while (i < array.Length - 1) {
             var array3 = Array.ConvertAll(array[i++].Replace("(", string.Empty).Replace(")", string.Empty).Split(new[] {
                 ','

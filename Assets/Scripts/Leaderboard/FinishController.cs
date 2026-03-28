@@ -16,9 +16,9 @@ public class FinishController : MonoBehaviour {
     public void Open(bool victory) {
         racePanel.SetActive(true);
             
-        if (GameState.i.gamemode == Gamemode.TimeTrial) {
+        if (GameState.i.gameMode == GameMode.TIME_TRIAL) {
             leaderboard.ClockTime();
-        } else if (GameState.i.gamemode == Gamemode.Race) {
+        } else if (GameState.i.gameMode == GameMode.RACE) {
             if (victory) {
                 victoryText.text = "Victory!";
                 leaderboard.ClockTime();

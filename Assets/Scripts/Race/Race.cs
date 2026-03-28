@@ -6,7 +6,7 @@ public class Race : MonoBehaviour {
     public GameObject enemyCarObject { get; set; }
 
     void Awake() {
-        if (GameState.i.gamemode != Gamemode.Race) {
+        if (GameState.i.gameMode != GameMode.RACE) {
             Destroy(this);
             return;
         }
