@@ -7,13 +7,10 @@ using UnityEngine.InputSystem;
 public class CycleMenu : MonoBehaviour {
     public TextMeshProUGUI[] correspondingText;
     public int startSelect;
-    public int backBtn;
 
     List<ItemCycle> cycles;
     List<TextMeshProUGUI> cycleText;
-    bool horizontalDone;
     int selected;
-    bool verticalDone;
 
     MenuControls menuControls;
 
@@ -51,8 +48,6 @@ public class CycleMenu : MonoBehaviour {
 
     void OnEnable() {
         selected = startSelect;
-        horizontalDone = true;
-        verticalDone = true;
         UpdateSelected();
 
         menuControls.Enable();
