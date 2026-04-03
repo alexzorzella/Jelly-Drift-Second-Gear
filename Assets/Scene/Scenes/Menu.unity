@@ -26809,6 +26809,7 @@ MonoBehaviour:
   - {fileID: 1858685766}
   - {fileID: 1722562982}
   - {fileID: 1577854586}
+  offset: -18
 --- !u!1 &1287256540
 GameObject:
   m_ObjectHideFlags: 0
