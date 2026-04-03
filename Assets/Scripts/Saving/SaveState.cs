@@ -1,6 +1,6 @@
 ﻿public class SaveState {
     public int quality { get; set; }
-    public int dof { get; set; }
+    public int depthOfField { get; set; }
     public int motionBlur { get; set; }
     public int cameraMode { get; set; }
     public int cameraShake { get; set; }
@@ -28,7 +28,7 @@
         graphics = SaveManager.i.state.graphics;
         quality = SaveManager.i.state.quality;
         motionBlur = SaveManager.i.state.motionBlur;
-        dof = SaveManager.i.state.dof;
+        depthOfField = SaveManager.i.state.depthOfField;
         cameraMode = SaveManager.i.state.cameraMode;
         cameraShake = SaveManager.i.state.cameraShake;
         muted = SaveManager.i.state.muted;

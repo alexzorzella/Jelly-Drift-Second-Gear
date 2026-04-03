@@ -38,7 +38,7 @@ public class PlayerSave {
             graphics = 0;
             quality = 0;
             motionBlur = 0;
-            dof = 0;
+            depthOfField = 0;
         }
 
         daniTimes[0] = 42.11238f;
@@ -56,7 +56,7 @@ public class PlayerSave {
     public int graphics { get; set; } = 1;
     public int quality { get; set; } = 2;
     public int motionBlur { get; set; } = 1;
-    public int dof { get; set; } = 1;
+    public int depthOfField { get; set; } = 1;
     public int cameraMode { get; set; }
     public int cameraShake { get; set; } = 1;
     public int muted { get; set; }

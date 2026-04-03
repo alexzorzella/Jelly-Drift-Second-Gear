@@ -35,7 +35,7 @@ public class PPController : MonoBehaviour {
             motionBlur.enabled.value = false;
         }
 
-        if (SaveState.i.dof == 1) {
+        if (SaveState.i.depthOfField == 1) {
             dof.enabled.value = true;
             return;
         }

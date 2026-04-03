@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
@@ -11,6 +12,15 @@ public class SettingsUi : MonoBehaviour {
 
     public Image sfxMuteImage;
     public Image musicMuteImage;
+
+    public TextMeshProUGUI motionBlurText;
+    public TextMeshProUGUI depthOfFieldText;
+    public TextMeshProUGUI graphicsText;
+    public TextMeshProUGUI qualityText;
+    public TextMeshProUGUI cameraModeText;
+    public TextMeshProUGUI cameraShakeText;
+
+    public GameObject mainMenu;
     
     void Start() {
         sfxSlider.maxValue = 20F;
@@ -26,6 +36,13 @@ public class SettingsUi : MonoBehaviour {
         
         ReflectSfxVolume();
         ReflectMusicVolume();
+        
+        motionBlurText.text = BoolIntToOnOffFormat(SaveState.i.motionBlur);
+        depthOfFieldText.text = BoolIntToOnOffFormat(SaveState.i.depthOfField);
+        graphicsText.text = BoolIntToQualityFormat(SaveState.i.graphics);
+        qualityText.text = BoolIntToQualityFormat(SaveState.i.quality);
+        cameraModeText.text = BoolIntToCameraMode(SaveState.i.cameraMode);
+        cameraShakeText.text = BoolIntToOnOffFormat(SaveState.i.cameraShake);
     }
 
     void ReflectSfxVolume(bool updateVolume = true) {
@@ -68,49 +85,84 @@ public class SettingsUi : MonoBehaviour {
         GameStats.i.ToggleMusicMute();
         ReflectMusicVolume(false);
     }
-    
+
     public void _SetMotionBlur(int n) {
-        SaveManager.i.state.motionBlur = n;
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.motionBlur, 2, n);
+        
+        SaveManager.i.state.motionBlur = newValue;
         SaveManager.i.Save();
-        SaveState.i.motionBlur = n;
+        SaveState.i.motionBlur = newValue;
+        motionBlurText.text = BoolIntToOnOffFormat(SaveState.i.motionBlur);
     }
 
     public void _SetDoF(int n) {
-        SaveManager.i.state.dof = n;
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.depthOfField, 2, n);
+        
+        SaveManager.i.state.depthOfField = newValue;
         SaveManager.i.Save();
-        SaveState.i.dof = n;
+        SaveState.i.depthOfField = newValue;
+        depthOfFieldText.text = BoolIntToOnOffFormat(SaveState.i.depthOfField);
     }
 
     public void _SetGraphics(int n) {
-        SaveManager.i.state.graphics = n;
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.graphics, 2, n);
+        
+        SaveManager.i.state.graphics = newValue;
         SaveManager.i.Save();
-        SaveState.i.graphics = n;
+        SaveState.i.graphics = newValue;
+        graphicsText.text = BoolIntToQualityFormat(SaveState.i.graphics);
     }
 
     public void _SetQuality(int n) {
-        SaveManager.i.state.quality = n;
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.quality, 2, n);
+        
+        SaveManager.i.state.quality = newValue;
         SaveManager.i.Save();
-        SaveState.i.quality = n;
-        QualitySettings.SetQualityLevel(n + Mathf.Clamp(2 * n - 1, 0, 10));
+        SaveState.i.quality = newValue;
+        QualitySettings.SetQualityLevel(newValue);
         if (CameraCulling.Instance) {
             CameraCulling.Instance.UpdateCulling();
         }
+        qualityText.text = BoolIntToQualityFormat(SaveState.i.quality);
     }
 
     public void _SetCamMode(int n) {
-        SaveManager.i.state.cameraMode = n;
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.cameraMode, 2, n);
+        
+        SaveManager.i.state.cameraMode = newValue;
         SaveManager.i.Save();
-        SaveState.i.cameraMode = n;
+        SaveState.i.cameraMode = newValue;
+        cameraModeText.text = BoolIntToCameraMode(SaveState.i.cameraMode);
     }
 
     public void _SetCamShake(int n) {
-        SaveManager.i.state.cameraShake = n;
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.cameraShake, 2, n);
+        
+        SaveManager.i.state.cameraShake = newValue;
         SaveManager.i.Save();
-        SaveState.i.cameraShake = n;
+        SaveState.i.cameraShake = newValue;
+        cameraShakeText.text = BoolIntToOnOffFormat(SaveState.i.cameraShake);
     }
 
+    public void _CloseMenu() {
+        mainMenu.SetActive(true);
+        gameObject.SetActive(false);
+    }
+    
     public void _SetResetSave() {
         SaveManager.i.NewSave();
         SaveManager.i.Save();
+    }
+
+    string BoolIntToOnOffFormat(int value) {
+        return value == 1 ? "On" : "Off";
+    }
+    
+    string BoolIntToCameraMode(int value) {
+        return value == 0 ? "Static" : "Dynamic";
+    }
+    
+    string BoolIntToQualityFormat(int value) {
+        return value == 0 ? "Low" : "Normal";
     }
 }
