@@ -906,14 +906,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d9c8e42e49ca643998576df327ad89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motionBlur: {fileID: 3074487060114381099}
-  graphics: {fileID: 6075805417613137745}
-  quality: {fileID: 1217665175445693068}
-  camMode: {fileID: 280962394424421798}
-  camShake: {fileID: 6890789312016564644}
-  dof: {fileID: 1661700592456619468}
-  volume: {fileID: 5673741543481504514}
-  music: {fileID: 2310279465429149129}
+  sfx: {fileID: 0}
+  music: {fileID: 0}
+  sfxSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
+  sfxMuteImage: {fileID: 0}
+  musicMuteImage: {fileID: 0}
+  motionBlurText: {fileID: 0}
+  depthOfFieldText: {fileID: 0}
+  graphicsText: {fileID: 0}
+  qualityText: {fileID: 0}
+  cameraModeText: {fileID: 0}
+  cameraShakeText: {fileID: 0}
+  mainMenu: {fileID: 0}
 --- !u!1 &700581574314002368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,7 +2584,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingText: []
   startSelect: 0
-  backBtn: 0
 --- !u!1 &1916979720937309435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3351,10 +3355,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5589867336331043806}
   - {fileID: 463192720837202065}
   - {fileID: 3481842224029271502}
   - {fileID: 2265705417797073356}
+  - {fileID: 5589867336331043806}
   - {fileID: 1661916856995203105}
   - {fileID: 5963878085892552714}
   m_Father: {fileID: 0}
@@ -5344,7 +5348,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingText: []
   startSelect: 0
-  backBtn: 0
 --- !u!114 &2694827047770970031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13986,7 +13989,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingText: []
   startSelect: 0
-  backBtn: 0
 --- !u!1 &8174242801083743497
 GameObject:
   m_ObjectHideFlags: 0
