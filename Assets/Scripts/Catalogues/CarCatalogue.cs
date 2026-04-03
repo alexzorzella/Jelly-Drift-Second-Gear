@@ -105,4 +105,14 @@ public static class CarCatalogue {
     
     public static readonly float[] gearEngineForceMultipliers = { 0.6F, 0.75F, 0.9F, 1, 1.15F, -1F };
     public static readonly float[] gearEngineDriftThresholdMultipliers = { 1.2F, 1.1F, 1F, 0.9F, 0.85F, 1F };
+
+    public static CarData GetCarById(int id) {
+        foreach (var car in cars) {
+            if (car.GetId() == id) {
+                return car;
+            }
+        }
+
+        return null;
+    }
 }

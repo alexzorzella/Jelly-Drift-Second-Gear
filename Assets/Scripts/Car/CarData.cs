@@ -59,6 +59,7 @@ public class CarData {
         string decelerateSoundName,
         GameObject model,
         List<Material> materials) {
+        this.id = id;
         this.name = name;
         
         this.mass = mass;

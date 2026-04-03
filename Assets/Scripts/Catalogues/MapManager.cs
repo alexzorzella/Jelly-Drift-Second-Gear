@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 public class MapManager {
@@ -78,5 +77,15 @@ public class MapManager {
             string result = name.Replace(" ", "_").ToLower();
             return result;
         }
+    }
+
+    public static MapData GetStageById(int id) {
+        foreach(MapData map in i.maps) {
+            if (map.GetId() == id) {
+                return map;
+            }
+        }
+        
+        return null;
     }
 }
