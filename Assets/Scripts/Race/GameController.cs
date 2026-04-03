@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour {
     public int finalCheckpoint;
     public float startTime = 1.5f;
     bool victory;
-    public Transform startPos { get; set; }
     public GameObject currentCar { get; set; }
     public bool playing { get; set; }
 
@@ -20,10 +19,11 @@ public class GameController : MonoBehaviour {
     void Awake() {
         Instance = this;
         Time.timeScale = 1f;
-        startPos = checkPoints.GetChild(0);
         Invoke("StartRace", startTime);
 
-        currentCar = ResourceLoader.InstantiateObject("Car", startPos.position - startPos.right * 2F, startPos.rotation);
+        Transform startPos = StartTransform();
+
+        currentCar = ResourceLoader.InstantiateObject("Car", startPos.position - startPos.right * 2F - startPos.forward + startPos.up * 0.25F, startPos.rotation);
         currentCar.GetComponent<Car>().Initialize(CarCatalogue.GetSelectedCarData());
 
         InitializeMenuInput();
@@ -127,5 +127,9 @@ public class GameController : MonoBehaviour {
 
     public void ShowFinishScreen() {
         FinishController.Instance.Open(victory);
+    }
+
+    public Transform StartTransform() {
+        return checkPoints.GetChild(0);
     }
 }

@@ -27,6 +27,9 @@ public class RealtimeSun : MonoBehaviour {
     bool isNight = false;
     float sunAngle;
     float percentageOfDayPassed = 0;
+
+    [Range(-180, 180)]
+    public float offset = 0;
     
     void Start() {
         lightSource = GetComponent<Light>();
@@ -56,7 +59,7 @@ public class RealtimeSun : MonoBehaviour {
 
         percentageOfDayPassed = ((float)secondsPassedToday / secondsInADay) % 1;
         
-        sunAngle = (360 * (percentageOfDayPassed % 1) + 270) % 360;
+        sunAngle = (360 * (percentageOfDayPassed % 1) + 270 + offset) % 360;
         
         transform.rotation = Quaternion.Euler(sunAngle, rotY, rotZ);
 

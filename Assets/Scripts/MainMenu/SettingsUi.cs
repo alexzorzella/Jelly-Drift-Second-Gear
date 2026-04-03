@@ -1,112 +1,168 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SettingsUi : MonoBehaviour {
-    public SettingCycle motionBlur;
-    public SettingCycle graphics;
-    public SettingCycle quality;
-    public SettingCycle camMode;
-    public SettingCycle camShake;
-    public SettingCycle dof;
-    public SliderSettingCycle volume;
-    public SliderSettingCycle music;
-    Color deselected = new(0f, 0f, 0f, 0.3f);
-    Color selected = Color.white;
+    public AudioMixer sfx;
+    public AudioMixer music;
 
+    public Slider sfxSlider;
+    public Slider musicSlider;
+
+    public Image sfxMuteImage;
+    public Image musicMuteImage;
+
+    public TextMeshProUGUI motionBlurText;
+    public TextMeshProUGUI depthOfFieldText;
+    public TextMeshProUGUI graphicsText;
+    public TextMeshProUGUI qualityText;
+    public TextMeshProUGUI cameraModeText;
+    public TextMeshProUGUI cameraShakeText;
+
+    public GameObject mainMenu;
+    
     void Start() {
-        LoadAllSettings();
+        sfxSlider.maxValue = 20F;
+        sfxSlider.minValue = -80F;
+
+        musicSlider.maxValue = 20F;
+        musicSlider.minValue = -80F;
+
+        sfx.GetFloat("Volume", out var sfxVolume);
+        GameStats.i.SetSfxVol(sfxVolume);
+        music.GetFloat("Volume", out var musicVolume);
+        GameStats.i.SetMusicVol(musicVolume);
+        
+        ReflectSfxVolume();
+        ReflectMusicVolume();
+        
+        motionBlurText.text = BoolIntToOnOffFormat(SaveState.i.motionBlur);
+        depthOfFieldText.text = BoolIntToOnOffFormat(SaveState.i.depthOfField);
+        graphicsText.text = BoolIntToQualityFormat(SaveState.i.graphics);
+        qualityText.text = BoolIntToQualityFormat(SaveState.i.quality);
+        cameraModeText.text = BoolIntToCameraMode(SaveState.i.cameraMode);
+        cameraShakeText.text = BoolIntToOnOffFormat(SaveState.i.cameraShake);
     }
 
-    void LoadAllSettings() {
-        LoadSetting(motionBlur, SaveState.i.motionBlur);
-        LoadSetting(dof, SaveState.i.dof);
-        LoadSetting(graphics, SaveState.i.graphics);
-        LoadSetting(quality, SaveState.i.quality);
-        LoadSetting(camMode, SaveState.i.cameraMode);
-        LoadSetting(camShake, SaveState.i.cameraShake);
-        LoadSettingSlider(volume, SaveState.i.volume);
-        LoadSettingSlider(music, SaveState.i.musicVolume);
+    void ReflectSfxVolume(bool updateVolume = true) {
+        if (updateVolume) {
+            float sfxVolume = GameStats.i._SfxVol();
+            sfx.SetFloat("Volume", sfxVolume);
+            sfxSlider.value = sfxVolume;
+        }
+        
+        sfxMuteImage.sprite = ResourceLoader.LoadSprite(GameStats.i.SfxMuted() ? "volume_off" : "volume_on");
+    }
+    
+    void ReflectMusicVolume(bool updateVolume = true) {
+        if (updateVolume) {
+            float musicVolume = GameStats.i._MusicVol();
+            music.SetFloat("Volume", musicVolume);
+            musicSlider.value = musicVolume;
+        }
+        musicMuteImage.sprite = ResourceLoader.LoadSprite(GameStats.i.MusicMuted() ? "volume_off" : "volume_on");
+    }
+    
+    public void _SetSfxVolume(float volume) {
+        GameStats.i.SetSfxVol(volume);
+        GameStats.i.UnmuteSfx();
+        ReflectSfxVolume();
     }
 
-    void LoadSetting(SettingCycle s, int n) {
-        s.selected = n;
-        s.UpdateOptions();
+    public void _ToggleSfxMute() {
+        GameStats.i.ToggleSfxMute();
+        ReflectSfxVolume(false);
+    }
+    
+    public void _SetMusicVolume(float volume) {
+        GameStats.i.SetMusicVol(volume);
+        GameStats.i.UnmuteMusic();
+        ReflectMusicVolume();
+    }
+    
+    public void _ToggleMusicMute() {
+        GameStats.i.ToggleMusicMute();
+        ReflectMusicVolume(false);
     }
 
-    void LoadSettingSlider(SliderSettingCycle s, int f) {
-        s.selected = f;
-        s.UpdateOptions();
-    }
-
-    public void UpdateSettings() {
-        MotionBlur(motionBlur.selected);
-        DoF(dof.selected);
-        Graphics(graphics.selected);
-        Quality(quality.selected);
-        CamMode(camMode.selected);
-        CamShake(camShake.selected);
-        Volume();
-        Music();
-    }
-
-    public void MotionBlur(int n) {
-        SaveManager.i.state.motionBlur = n;
+    public void _SetMotionBlur(int n) {
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.motionBlur, 2, n);
+        
+        SaveManager.i.state.motionBlur = newValue;
         SaveManager.i.Save();
-        SaveState.i.motionBlur = n;
-        // PPController.Instance.LoadSettings();
+        SaveState.i.motionBlur = newValue;
+        motionBlurText.text = BoolIntToOnOffFormat(SaveState.i.motionBlur);
     }
 
-    public void DoF(int n) {
-        SaveManager.i.state.dof = n;
+    public void _SetDoF(int n) {
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.depthOfField, 2, n);
+        
+        SaveManager.i.state.depthOfField = newValue;
         SaveManager.i.Save();
-        SaveState.i.dof = n;
-        // PPController.Instance.LoadSettings();
+        SaveState.i.depthOfField = newValue;
+        depthOfFieldText.text = BoolIntToOnOffFormat(SaveState.i.depthOfField);
     }
 
-    public void Graphics(int n) {
-        SaveManager.i.state.graphics = n;
+    public void _SetGraphics(int n) {
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.graphics, 2, n);
+        
+        SaveManager.i.state.graphics = newValue;
         SaveManager.i.Save();
-        SaveState.i.graphics = n;
-        // PPController.Instance.LoadSettings();
+        SaveState.i.graphics = newValue;
+        graphicsText.text = BoolIntToQualityFormat(SaveState.i.graphics);
     }
 
-    public void Quality(int n) {
-        SaveManager.i.state.quality = n;
+    public void _SetQuality(int n) {
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.quality, 2, n);
+        
+        SaveManager.i.state.quality = newValue;
         SaveManager.i.Save();
-        SaveState.i.quality = n;
-        QualitySettings.SetQualityLevel(n + Mathf.Clamp(2 * n - 1, 0, 10));
+        SaveState.i.quality = newValue;
+        QualitySettings.SetQualityLevel(newValue);
         if (CameraCulling.Instance) {
             CameraCulling.Instance.UpdateCulling();
         }
+        qualityText.text = BoolIntToQualityFormat(SaveState.i.quality);
     }
 
-    public void CamMode(int n) {
-        SaveManager.i.state.cameraMode = n;
+    public void _SetCamMode(int n) {
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.cameraMode, 2, n);
+        
+        SaveManager.i.state.cameraMode = newValue;
         SaveManager.i.Save();
-        SaveState.i.cameraMode = n;
+        SaveState.i.cameraMode = newValue;
+        cameraModeText.text = BoolIntToCameraMode(SaveState.i.cameraMode);
     }
 
-    public void CamShake(int n) {
-        SaveManager.i.state.cameraShake = n;
+    public void _SetCamShake(int n) {
+        int newValue = IncrementWithOverflow.Run(SaveManager.i.state.cameraShake, 2, n);
+        
+        SaveManager.i.state.cameraShake = newValue;
         SaveManager.i.Save();
-        SaveState.i.cameraShake = n;
+        SaveState.i.cameraShake = newValue;
+        cameraShakeText.text = BoolIntToOnOffFormat(SaveState.i.cameraShake);
     }
 
-    public void Volume() {
-        SaveManager.i.state.volume = volume.selected;
-        SaveManager.i.Save();
-        SaveState.i.volume = volume.selected;
-        AudioListener.volume = volume.selected / 10f;
+    public void _CloseMenu() {
+        mainMenu.SetActive(true);
+        gameObject.SetActive(false);
     }
-
-    public void Music() {
-        SaveManager.i.state.music = music.selected;
-        SaveManager.i.Save();
-        SaveState.i.musicVolume = music.selected;
-        MusicController.i.UpdateVolume(music.selected);
-    }
-
-    public void ResetSave() {
+    
+    public void _SetResetSave() {
         SaveManager.i.NewSave();
         SaveManager.i.Save();
+    }
+
+    string BoolIntToOnOffFormat(int value) {
+        return value == 1 ? "On" : "Off";
+    }
+    
+    string BoolIntToCameraMode(int value) {
+        return value == 0 ? "Static" : "Dynamic";
+    }
+    
+    string BoolIntToQualityFormat(int value) {
+        return value == 0 ? "Low" : "Normal";
     }
 }

@@ -19,7 +19,6 @@ public class SettingCycle : ItemCycle {
     public override void Cycle(int n) {
         base.Cycle(n);
         UpdateOptions();
-        settings.UpdateSettings();
     }
 
     public void UpdateOptions() {

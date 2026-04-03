@@ -52,27 +52,27 @@ public static class CarCatalogue {
             WithMaterials("Midnight").Build(),
         new CarData.Builder(20, "Mom Van", "van").
             WithSuspensionSpecs(0.45F).
-            WithCarSpecs(stability: 0).
+            WithCarSpecs(engineForce: 2800, stability: 0.25F).
             WithDriftSpecs(1.8F).
-            WithPhysicsSpecs(mass: 1100).
+            WithPhysicsSpecs(mass: 1200).
             WithMaterials("Midnight").Build(),
         new CarData.Builder(30, "Accurate Integral", "integra").
             WithCarSpecs(3030, stability: 0.7F).
             WithDriftSpecs(1.4F).
             WithMaterials("Gray", "Midnight", "Crimson", "Yellow", "OJ").
             WithAudio("db8_accel").Build(),
-        new CarData.Builder(2, "Nissaan Freshpine", "skyline").
-            WithCarSpecs(2850, stability: 0.9F).
-            WithDriftSpecs(1, 0.45F).
-            WithMaterials("Gray", "Midnight", "Crimson", "Sakura", "Shadow").
-            WithAudio("r32_accel").Build(),
-        new CarData.Builder(3, "Nissaan Silva HQR", "s14").
-            WithPhysicsSpecs(1350, 0, 0.4F).
-            WithCarSpecs(antiRoll: 8000, stability: 0).
-            WithDriftSpecs(1.2F, 0.8F).
-            WithMaterials("Beach").
-            WithAudio("s14_accel").Build(),
-        new CarData.Builder(35, "Fuji TFM", "ae86").
+        // new CarData.Builder(2, "Nissaan Freshpine", "skyline").
+        //     WithCarSpecs(2850, stability: 0.9F).
+        //     WithDriftSpecs(1, 0.45F).
+        //     WithMaterials("Gray", "Midnight", "Crimson", "Sakura", "Shadow").
+        //     WithAudio("r32_accel").Build(),
+        // new CarData.Builder(3, "Nissaan Silva HQR", "s14").
+        //     WithPhysicsSpecs(1350, 0, 0.4F).
+        //     WithCarSpecs(antiRoll: 8000, stability: 0).
+        //     WithDriftSpecs(1.2F, 0.8F).
+        //     WithMaterials("Beach").
+        //     WithAudio("s14_accel").Build(),
+        new CarData.Builder(35, "Fuji", "ae86").
             WithCarSpecs(3050, stability: 0.25F).
             WithDriftSpecs(1.43F).
             WithMaterials("4th Stage", "Tofu", "Tofu_1", "tofu_2", "ToduHidden", "Tofu").Build(),
@@ -105,4 +105,14 @@ public static class CarCatalogue {
     
     public static readonly float[] gearEngineForceMultipliers = { 0.6F, 0.75F, 0.9F, 1, 1.15F, -1F };
     public static readonly float[] gearEngineDriftThresholdMultipliers = { 1.2F, 1.1F, 1F, 0.9F, 0.85F, 1F };
+
+    public static CarData GetCarById(int id) {
+        foreach (var car in cars) {
+            if (car.GetId() == id) {
+                return car;
+            }
+        }
+
+        return null;
+    }
 }
