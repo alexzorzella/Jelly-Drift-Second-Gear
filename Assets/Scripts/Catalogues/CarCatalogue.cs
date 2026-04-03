@@ -61,18 +61,18 @@ public static class CarCatalogue {
             WithDriftSpecs(1.4F).
             WithMaterials("Gray", "Midnight", "Crimson", "Yellow", "OJ").
             WithAudio("db8_accel").Build(),
-        new CarData.Builder(2, "Nissaan Freshpine", "skyline").
-            WithCarSpecs(2850, stability: 0.9F).
-            WithDriftSpecs(1, 0.45F).
-            WithMaterials("Gray", "Midnight", "Crimson", "Sakura", "Shadow").
-            WithAudio("r32_accel").Build(),
-        new CarData.Builder(3, "Nissaan Silva HQR", "s14").
-            WithPhysicsSpecs(1350, 0, 0.4F).
-            WithCarSpecs(antiRoll: 8000, stability: 0).
-            WithDriftSpecs(1.2F, 0.8F).
-            WithMaterials("Beach").
-            WithAudio("s14_accel").Build(),
-        new CarData.Builder(35, "Fuji TFM", "ae86").
+        // new CarData.Builder(2, "Nissaan Freshpine", "skyline").
+        //     WithCarSpecs(2850, stability: 0.9F).
+        //     WithDriftSpecs(1, 0.45F).
+        //     WithMaterials("Gray", "Midnight", "Crimson", "Sakura", "Shadow").
+        //     WithAudio("r32_accel").Build(),
+        // new CarData.Builder(3, "Nissaan Silva HQR", "s14").
+        //     WithPhysicsSpecs(1350, 0, 0.4F).
+        //     WithCarSpecs(antiRoll: 8000, stability: 0).
+        //     WithDriftSpecs(1.2F, 0.8F).
+        //     WithMaterials("Beach").
+        //     WithAudio("s14_accel").Build(),
+        new CarData.Builder(35, "Fuji", "ae86").
             WithCarSpecs(3050, stability: 0.25F).
             WithDriftSpecs(1.43F).
             WithMaterials("4th Stage", "Tofu", "Tofu_1", "tofu_2", "ToduHidden", "Tofu").Build(),
