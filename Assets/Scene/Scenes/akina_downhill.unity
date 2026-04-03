@@ -82607,7 +82607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 0}
 --- !u!114 &4151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82632,7 +82631,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 0}
 --- !u!114 &4158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82657,7 +82655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 0}
 --- !u!114 &4163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82670,7 +82667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 0}
 --- !u!114 &4164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82683,7 +82679,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 0}
 --- !u!114 &4168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82720,7 +82715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 0}
 --- !u!114 &4176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82733,7 +82727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 0}
 --- !u!114 &4180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82746,7 +82739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 0}
 --- !u!114 &4251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82851,6 +82843,7 @@ MonoBehaviour:
   endCamera: {fileID: 4142}
   finalCheckpoint: 7
   startTime: 1.5
+  startPos: {fileID: 0}
 --- !u!114 &4368
 MonoBehaviour:
   m_ObjectHideFlags: 0

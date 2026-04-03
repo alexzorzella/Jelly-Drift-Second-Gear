@@ -12,7 +12,7 @@ public class Race : MonoBehaviour {
         }
 
         gameController = gameObject.GetComponent<GameController>();
-        var startPos = gameController.startPos;
+        var startPos = gameController.StartTransform();
         
         enemyCarObject = ResourceLoader.InstantiateObject("Car", startPos.position + startPos.right * 2F, startPos.rotation);
 
