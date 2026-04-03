@@ -14,6 +14,9 @@ public class CycleMenu : MonoBehaviour {
 
     MenuControls menuControls;
 
+    readonly Color unselectedColor = Color.white;
+    readonly Color selectedColor = new Color(0.9F, 0.58F, 0.01F, 1);
+    
     void Awake() {
         selected = startSelect;
         cycles = new List<ItemCycle>();
@@ -25,11 +28,11 @@ public class CycleMenu : MonoBehaviour {
                 cycles.Add(component);
                 var componentInChildren = component.GetComponentInChildren<TextMeshProUGUI>();
                 cycleText.Add(componentInChildren);
-                componentInChildren.color = Color.white;
+                componentInChildren.color = unselectedColor;
             }
         }
 
-        cycleText[selected].color = Color.black;
+        cycleText[selected].color = selectedColor;
 
         InitializeInput();
     }
@@ -60,15 +63,15 @@ public class CycleMenu : MonoBehaviour {
 
     void UpdateSelected() {
         foreach (var textMeshProUGUI in cycleText) {
-            textMeshProUGUI.color = Color.white;
+            textMeshProUGUI.color = unselectedColor;
             if (correspondingText.Length != 0 && !correspondingText[selected].gameObject.CompareTag("Ignore")) {
-                correspondingText[selected].color = Color.white;
+                correspondingText[selected].color = unselectedColor;
             }
         }
 
-        cycleText[selected].color = Color.black;
+        cycleText[selected].color = selectedColor;
         if (correspondingText.Length != 0 && !correspondingText[selected].gameObject.CompareTag("Ignore")) {
-            correspondingText[selected].color = Color.black;
+            correspondingText[selected].color = selectedColor;
         }
     }
 
@@ -90,30 +93,19 @@ public class CycleMenu : MonoBehaviour {
         }
     }
 
-    void Cancel(InputAction.CallbackContext context) {
-        // cycles[backBtn].Cycle(1);
-        // SoundManager.Instance.PlayCycle();
-    }
-
     void Navigate(Vector2 input) {
         int verticalInput = -(int)input.y;
 
-        cycleText[selected].color = Color.white;
+        cycleText[selected].color = unselectedColor;
         if (correspondingText.Length != 0 && !correspondingText[selected].gameObject.CompareTag("Ignore")) {
-            correspondingText[selected].color = Color.white;
+            correspondingText[selected].color = selectedColor;
         }
 
-        selected += verticalInput;
-        if (selected >= cycles.Count) {
-            selected = 0;
-        }
-        else if (selected < 0) {
-            selected = cycles.Count - 1;
-        }
-
-        cycleText[selected].color = Color.black;
+        selected = IncrementWithOverflow.Run(selected, cycles.Count, verticalInput);
+        
+        cycleText[selected].color = selectedColor;
         if (correspondingText.Length != 0 && !correspondingText[selected].gameObject.CompareTag("Ignore")) {
-            correspondingText[selected].color = Color.black;
+            correspondingText[selected].color = selectedColor;
         }
 
         SoundManager.i.PlayMenuNavigate();
