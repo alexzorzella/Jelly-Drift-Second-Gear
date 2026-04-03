@@ -33128,8 +33128,8 @@ GameObject:
   - component: {fileID: 2079746340}
   - component: {fileID: 2079746342}
   - component: {fileID: 2079746341}
-  - component: {fileID: 2079746343}
   - component: {fileID: 2079746344}
+  - component: {fileID: 2079746343}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged

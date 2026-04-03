@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7050598426947232710}
   - component: {fileID: 4263279932890781384}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RearLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,8 +94,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097111039592762599}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0.000012313965, z: 0.000012313965, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.448, z: -0.006542683}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.448, z: 0}
   m_LocalScale: {x: 1.48478, y: 1.48478, z: 1.48478}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -106,7 +106,7 @@ Transform:
   - {fileID: 8665528983381062920}
   - {fileID: 573901775126171242}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0.002}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &1101487464417475394
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 8941575761659980921}
   - component: {fileID: 2957986273173168331}
   - component: {fileID: 3239732112723863922}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelSpinFx (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2812,7 +2812,7 @@ GameObject:
   - component: {fileID: 8665528983381062920}
   - component: {fileID: 6513443659149371628}
   - component: {fileID: 8723659296561146934}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RearRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2978,7 +2978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8886963443744899466}
   - component: {fileID: 1560434741079105333}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: FrontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3154,7 +3154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573901775126171242}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: CenterOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3187,7 +3187,7 @@ GameObject:
   - component: {fileID: 8014304508301736112}
   - component: {fileID: 6944315289825078624}
   - component: {fileID: 143574469092674511}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: SmokeFx (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5882,7 +5882,7 @@ GameObject:
   - component: {fileID: 8535309783287681707}
   - component: {fileID: 6164099842555335640}
   - component: {fileID: 652062195055906460}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelSpinFx (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8567,7 +8567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6553347053217921444}
   - component: {fileID: 8036491158739308614}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: FrontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8636,7 +8636,7 @@ GameObject:
   - component: {fileID: 1090965784183397951}
   - component: {fileID: 1242363251515031447}
   - component: {fileID: 1198655918236919225}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: SmokeFx (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11330,7 +11330,7 @@ GameObject:
   - component: {fileID: 184781982116420471}
   - component: {fileID: 2876811230263785387}
   - component: {fileID: 7528568345621974494}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: SmokeFx (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14025,7 +14025,7 @@ GameObject:
   - component: {fileID: 1641705734750886741}
   - component: {fileID: 743936328000065346}
   - component: {fileID: 5151205949429608397}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: SmokeFx (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
