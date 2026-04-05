@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -32,9 +33,24 @@ public class UIManager : MonoBehaviour {
 
     float targetSpedometerRotation = 0;
     
+    static readonly List<Color> gearColors = new() {
+        new Color(0, 0, 1, 0.8F),
+        new Color(0, 0, 1, 0.8F),
+        new Color(0.9F, 0.58F, 0.01F, 0.8F),
+        new Color(0.9F, 0.58F, 0.01F, 0.8F),
+        new Color(1, 0, 0, 0.8F),
+        new Color(0.12F, 0.8F, 0.25F, 0.8F)
+    };
+    
     void UpdateSpedometer(float currentSpeed, int currentGear) {
+        Color gearColor = gearColors[currentGear];
+        gearColor = new Color(gearColor.r, gearColor.g, gearColor.b, 0.8F);
+        gearText.color = gearColor;
+            
         gearText.text = currentGear <= 4 ? (currentGear + 1).ToString() : "R";
+        
         spedometerText.text = $"{currentSpeed.ToString("0")} km/h";
+        
         float speedPercentage = (currentSpeed / maxSpeed);
         float rotation = speedPercentage * -360F;
         targetSpedometerRotation = rotation;
