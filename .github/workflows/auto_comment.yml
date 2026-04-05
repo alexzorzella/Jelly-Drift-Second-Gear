@@ -19,7 +19,7 @@ jobs:
             const username = context.payload.issue.user.login;
             
             const comment = [
-              `Hey @${username}!,
+              `Hey @${username}!`,
               ``,
               `<img src="https://media.tenor.com/tVHlGqIC3-IAAAAM/smiling-elizabeth-bennet.gif" height="200" width="200" />`].join('\n');
 
