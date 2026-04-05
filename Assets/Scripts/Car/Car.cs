@@ -2,7 +2,8 @@
 using UnityEngine;
 
 public class Car : MonoBehaviour, StartListener {
-    int gear = 3;
+    int gear = 2;
+    int lastNonReverseGear = 2;
 
     bool started = false;
 
@@ -12,8 +13,18 @@ public class Car : MonoBehaviour, StartListener {
     
     public void NotifyCountdownUpdated(int countdown) { }
     public void NotifyStartRace() { started = true; }
-    
-    public void SetGear(int gear) { this.gear = gear; }
+
+    public void SetGear(int gear) {
+        this.gear = gear;
+
+        if (gear != 5) {
+            lastNonReverseGear = gear;
+        }
+    }
+
+    public void ExitReverse() {
+        gear = lastNonReverseGear;
+    }
     
     float overrideEngineForce = 0;
 

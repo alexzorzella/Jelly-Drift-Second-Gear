@@ -46,7 +46,7 @@ public class PlayerInput : MonoBehaviour {
             car.SetGear(5);
             car.throttle = 1;
         } else {
-            car.SetGear(2);
+            car.ExitReverse();
             car.throttle = 0;
         }
     }
