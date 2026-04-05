@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour {
                 Mathf.LerpAngle(
                     spedometerIndicator.localEulerAngles.z,
                     targetSpedometerRotation, 
-                    Time.deltaTime * 15F * Mathf.Clamp(speedPercentage + 0.2F, 0, 1)));
+                    Time.deltaTime * 15F));
     }
 
     public void DisplaySplit() {
