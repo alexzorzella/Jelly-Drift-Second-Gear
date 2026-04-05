@@ -10,8 +10,6 @@ public class Race : MonoBehaviour {
             return;
         }
         
-        Debug.Log("Game is a race");
-
         gameController = gameObject.GetComponent<GameController>();
         var startPos = gameController.StartTransform();
         

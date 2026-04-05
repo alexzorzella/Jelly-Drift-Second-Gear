@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour {
 
     public RectTransform spedometerIndicator;
     public TextMeshProUGUI spedometerText;
+    public TextMeshProUGUI gearText;
 
     Car car;
     
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour {
     float targetSpedometerRotation = 0;
     
     void UpdateSpedometer(float currentSpeed, int currentGear) {
+        gearText.text = currentGear <= 4 ? (currentGear + 1).ToString() : "R";
         spedometerText.text = $"{currentSpeed.ToString("0")} km/h";
         float speedPercentage = (currentSpeed / maxSpeed);
         float rotation = speedPercentage * -360F;
