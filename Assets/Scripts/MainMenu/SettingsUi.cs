@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class SettingsUi : MonoBehaviour {
@@ -45,22 +46,25 @@ public class SettingsUi : MonoBehaviour {
         cameraShakeText.text = BoolIntToOnOffFormat(SaveState.i.cameraShake);
     }
 
-    void ReflectSfxVolume(bool updateVolume = true) {
-        if (updateVolume) {
-            float sfxVolume = GameStats.i._SfxVol();
-            sfx.SetFloat("Volume", sfxVolume);
+    void ReflectSfxVolume(bool updateSlider = true) {
+        float sfxVolume = GameStats.i._SfxVol();
+        sfx.SetFloat("Volume", sfxVolume);
+
+        if (updateSlider) {
             sfxSlider.value = sfxVolume;
         }
         
         sfxMuteImage.sprite = ResourceLoader.LoadSprite(GameStats.i.SfxMuted() ? "volume_off" : "volume_on");
     }
     
-    void ReflectMusicVolume(bool updateVolume = true) {
-        if (updateVolume) {
-            float musicVolume = GameStats.i._MusicVol();
-            music.SetFloat("Volume", musicVolume);
+    void ReflectMusicVolume(bool updateSlider = true) {
+        float musicVolume = GameStats.i._MusicVol();
+        music.SetFloat("Volume", musicVolume);
+
+        if (updateSlider) {
             musicSlider.value = musicVolume;
         }
+
         musicMuteImage.sprite = ResourceLoader.LoadSprite(GameStats.i.MusicMuted() ? "volume_off" : "volume_on");
     }
     

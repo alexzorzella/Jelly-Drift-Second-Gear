@@ -365,23 +365,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &35
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 783}
-  - component: {fileID: 2868}
-  m_Layer: 0
-  m_Name: Ambience
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &38
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +394,7 @@ GameObject:
   - component: {fileID: 785}
   - component: {fileID: 3435}
   - component: {fileID: 3436}
+  - component: {fileID: 3437}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -11680,21 +11664,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 792}
   m_LocalEulerAnglesHint: {x: -180, y: -6.725632, z: 180}
---- !u!4 &783
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59.11576, y: -20.53214, z: -83.32001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &784
 Transform:
   m_ObjectHideFlags: 0
@@ -59260,103 +59229,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317}
   m_Enabled: 1
---- !u!82 &2868
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 951e03b39d17bd34083f6eb4b95d1fea, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.25
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3333333
-      outWeight: 0.3333333
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3333333
-      outWeight: 0.3333333
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3333333
-      outWeight: 0.3333333
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3333333
-      outWeight: 0.3333333
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3333333
-      outWeight: 0.3333333
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!104 &2869
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -62346,7 +62218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 1097986407608406, guid: 4afe24021a8d5a941a960ad900572c4a, type: 3}
 --- !u!114 &3224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62359,7 +62230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 1097986407608406, guid: 4afe24021a8d5a941a960ad900572c4a, type: 3}
 --- !u!114 &3225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62410,7 +62280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 1097986407608406, guid: 4afe24021a8d5a941a960ad900572c4a, type: 3}
 --- !u!114 &3232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62435,7 +62304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 1097986407608406, guid: 4afe24021a8d5a941a960ad900572c4a, type: 3}
 --- !u!114 &3239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62473,7 +62341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 1097986407608406, guid: 4afe24021a8d5a941a960ad900572c4a, type: 3}
 --- !u!114 &3248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62486,7 +62353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddb63d57c802c439f684f8a9c2402f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearFx: {fileID: 1097986407608406, guid: 4afe24021a8d5a941a960ad900572c4a, type: 3}
 --- !u!114 &3319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62571,8 +62437,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbcfbab531814da4db9cac44badb540a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCarPrefab: {fileID: 1788473188190847, guid: c643dfeedcb6ede4fb57494f741ff9a0,
-    type: 3}
+--- !u!114 &3437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3742bf88791824eb288a189d844b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ambienceSoundName: forest
 --- !u!1001 &1696253613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62679,7 +62556,6 @@ SceneRoots:
   - {fileID: 777}
   - {fileID: 779}
   - {fileID: 781}
-  - {fileID: 783}
   - {fileID: 784}
   - {fileID: 785}
   - {fileID: 786}
