@@ -10,7 +10,7 @@ public class Suspension : MonoBehaviour {
     [HideInInspector] public float grip;
 
     public bool showFx = true;
-    public AudioSource skidSfx;
+    MultiAudioSource skidSfx;
     public ParticleSystem smokeFx;
     public ParticleSystem spinFx;
     public float steeringAngle;
@@ -51,6 +51,10 @@ public class Suspension : MonoBehaviour {
         bodyRb = car.GetComponent<Rigidbody>();
         raycastOffset = car.GetCarData().GetSuspensionLength() * 0.5f;
 
+        skidSfx = MultiAudioSource.FromResource(gameObject, "tire_skidding", loop: true);
+        skidSfx.SetVolume(0);
+        skidSfx.Play();
+        
         if (smokeFx != null) {
             smokeEmitting = smokeFx.emission;
         }
@@ -110,14 +114,14 @@ public class Suspension : MonoBehaviour {
             lastSkid = -1;
         }
 
-        if (skidSfx) {
+        if (skidSfx != null) {
             var num = 1f;
             if (bodyRb.linearVelocity.magnitude < 2f) {
                 num = 0f;
             }
 
-            skidSfx.volume = traction * num;
-            skidSfx.pitch = 0.3f + 0.4f * Mathf.Clamp(traction * 0.5f, 0f, 1f);
+            skidSfx.SetVolume(traction * num);
+            skidSfx.SetPitch(0.3f + 0.4f * Mathf.Clamp(traction * 0.5f, 0f, 1f));
         }
 
         if (!rearWheel) {
