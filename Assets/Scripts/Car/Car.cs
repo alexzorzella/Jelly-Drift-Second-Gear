@@ -1,9 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+public enum CarGear : int {
+    FIRST = 0,
+    SECOND = 1,
+    THIRD = 2,
+    FOURTH = 3,
+    FIFTH = 4,
+    REVERSE = 5
+}
+
 public class Car : MonoBehaviour, StartListener {
-    int gear = 2;
-    int lastNonReverseGear = 2;
+    CarGear gear = CarGear.THIRD;
+    CarGear lastNonReverseGear = CarGear.THIRD;
 
     bool started = false;
 
@@ -14,10 +23,10 @@ public class Car : MonoBehaviour, StartListener {
     public void NotifyCountdownUpdated(int countdown) { }
     public void NotifyStartRace() { started = true; }
 
-    public void SetGear(int gear) {
+    public void SetGear(CarGear gear) {
         this.gear = gear;
 
-        if (gear != 5) {
+        if (gear != CarGear.REVERSE) {
             lastNonReverseGear = gear;
         }
     }
@@ -197,7 +206,7 @@ public class Car : MonoBehaviour, StartListener {
                     num2 -= 0.6f;
                 }
 
-                var currentThreshold = carData.GetDriftThreshold() * CarCatalogue.gearEngineDriftThresholdMultipliers[gear];
+                var currentThreshold = carData.GetDriftThreshold() * CarCatalogue.gearEngineDriftThresholdMultipliers[(int)gear];
                 
                 if (absYVel > 1f) {
                     currentThreshold -= 0.2f;
@@ -234,7 +243,7 @@ public class Car : MonoBehaviour, StartListener {
                     suspension.transform.forward * 
                     throttle * 
                     GetEngineForce() *
-                    CarCatalogue.gearEngineForceMultipliers[gear] *
+                    CarCatalogue.gearEngineForceMultipliers[(int)gear] *
                     d2 * 
                     d;
                 
@@ -336,7 +345,7 @@ public class Car : MonoBehaviour, StartListener {
         horn.Stop();
     }
 
-    public int GetGear() {
+    public CarGear GetGear() {
         return gear;
     }
 

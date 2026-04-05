@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour {
     
     void Update() {
         if (car != null) {
-            UpdateSpedometer(car.GetDisplaySpeedValue(), car.GetGear());
+            UpdateSpedometer(car.GetDisplaySpeedValue(), (int)car.GetGear());
         }
     }
 
