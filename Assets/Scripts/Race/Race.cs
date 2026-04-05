@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 
 public class Race : MonoBehaviour {
-    public GameObject enemyCarPrefab;
     GameController gameController;
-    public GameObject enemyCarObject { get; set; }
+    GameObject enemyCarObject { get; set; }
 
     void Awake() {
         if (GameState.i.gameMode != GameMode.RACE) {
             Destroy(this);
             return;
         }
+        
+        Debug.Log("Game is a race");
 
         gameController = gameObject.GetComponent<GameController>();
         var startPos = gameController.StartTransform();

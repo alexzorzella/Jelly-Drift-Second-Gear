@@ -30,7 +30,6 @@ public class MapCycle : ItemCycle {
 
         UpdateUI();
         max = MapManager.i.MapCount();
-        // CarDisplay.Instance.Hide();
     }
 
     void Update() {
@@ -47,7 +46,6 @@ public class MapCycle : ItemCycle {
             return;
         }
 
-        // CarDisplay.Instance.Hide();
         selected = SaveManager.i.state.lastMap;
         UpdateUI();
     }
@@ -69,7 +67,6 @@ public class MapCycle : ItemCycle {
         
         mapImg.sprite = mapData.GetSprite();
         name.text = "| " + mapData.GetName();
-        // time.text = "PB - " + Timer.GetFormattedTime(SaveManager.Instance.state.times[n]);
         if (ghostCycle) {
             ghostCycle.UpdateText();
         }
@@ -90,23 +87,10 @@ public class MapCycle : ItemCycle {
     }
 
     void UpdateStars() {
-        // for (var i = 0; i < starTimes.Length; i++) {
-        //     starTimes[i].text = Timer.GetFormattedTime(MapManager.Instance.maps[selected].times[i]);
-        // }
-        //
-        // var stars = MapManager.Instance.GetStars(selected, SaveManager.Instance.state.times[selected]);
-        // for (var j = 0; j < pbStars.Length; j++) {
-        //     if (j < stars) {
-        //         pbStars[j].color = Color.yellow;
-        //     }
-        //     else {
-        //         pbStars[j].color = Color.gray;
-        //     }
-        // }
+        
     }
 
     public void SaveMap() {
         GameState.i.map = selected;
-        GameState.i.gameMode = gameMode;
     }
 }
