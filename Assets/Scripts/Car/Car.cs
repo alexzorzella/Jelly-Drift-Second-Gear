@@ -18,8 +18,21 @@ public class Car : MonoBehaviour, StartListener {
 
     void Start() {
         FindFirstObjectByType<StartHandler>()?.RegsiterListener(this);
+        InitializeAudio();
     }
-    
+
+    void InitializeAudio() {
+        accelerationSource = MultiAudioSource.FromResource(gameObject, carData.GetAccelerateSoundName(), loop: true, spatialBlend: 1, minDistance: 5, maxDistance: 15);
+        decelerationSource = MultiAudioSource.FromResource(gameObject, carData.GetDecelerateSoundName(), loop: true, spatialBlend: 1, minDistance: 5, maxDistance: 15);
+        horn = MultiAudioSource.FromResource(gameObject, "car_horn", loop: true, spatialBlend: 1, minDistance: 5, maxDistance: 15);
+        
+        accelerationSource.SetVolume(0);
+        decelerationSource.SetVolume(0);
+        
+        accelerationSource.PlayRoundRobin();
+        decelerationSource.PlayRoundRobin();
+    }
+
     public void NotifyCountdownUpdated(int countdown) { }
     public void NotifyStartRace() { started = true; }
 
@@ -88,7 +101,10 @@ public class Car : MonoBehaviour, StartListener {
 
         if (!isCpu) {
             gameObject.AddComponent<PlayerInput>().Initialize(this);
-            UIManager.Instance.SetCar(this);
+
+            if (UIManager.Instance != null) {
+                UIManager.Instance.SetCar(this);
+            }
         }
         
         // Materials are set here
@@ -129,16 +145,6 @@ public class Car : MonoBehaviour, StartListener {
         }
 
         carCollider = GetComponentInChildren<Collider>();
-
-        accelerationSource = MultiAudioSource.FromResource(gameObject, carData.GetAccelerateSoundName(), loop: true, spatialBlend: 1, minDistance: 5, maxDistance: 15);
-        decelerationSource = MultiAudioSource.FromResource(gameObject, carData.GetDecelerateSoundName(), loop: true, spatialBlend: 1, minDistance: 5, maxDistance: 15);
-        horn = MultiAudioSource.FromResource(gameObject, "car_horn", loop: true, spatialBlend: 1, minDistance: 5, maxDistance: 15);
-        
-        accelerationSource.SetVolume(0);
-        decelerationSource.SetVolume(0);
-        
-        accelerationSource.PlayRoundRobin();
-        decelerationSource.PlayRoundRobin();
     }
 
     void Update() {
@@ -161,17 +167,22 @@ public class Car : MonoBehaviour, StartListener {
     }
     
     void HandleAudio() {
-        accelerationSource.SetVolume(Mathf.Lerp(accelerationSource.GetVolume(),
-            Mathf.Abs(throttle) + Mathf.Abs(speed / 80f),
-            Time.deltaTime * 6f));
-        decelerationSource.SetVolume(Mathf.Lerp(decelerationSource.GetVolume(), speed / 40f - throttle * 0.5f, Time.deltaTime * 4f));
-        accelerationSource.SetPitch(Mathf.Lerp(accelerationSource.GetPitch(), 0.65f + Mathf.Clamp(Mathf.Abs(speed / 160f) * (1 + (Mathf.Abs((float)gear) / 5)), 0f, 1f),
-            Time.deltaTime * 5f));
-        if (!grounded) {
-            accelerationSource.SetPitch(Mathf.Lerp(accelerationSource.GetPitch(), 1.5f, Time.deltaTime * 8f));
+        if (accelerationSource != null) {
+            accelerationSource.SetVolume(Mathf.Lerp(accelerationSource.GetVolume(),
+                Mathf.Abs(throttle) + Mathf.Abs(speed / 80f),
+                Time.deltaTime * 6f));
         }
-        
-        decelerationSource.SetPitch(Mathf.Lerp(decelerationSource.GetPitch(), 0.5f + speed / 40f, Time.deltaTime * 2f));
+
+        if (decelerationSource != null) {
+            decelerationSource.SetVolume(Mathf.Lerp(decelerationSource.GetVolume(), speed / 40f - throttle * 0.5f, Time.deltaTime * 4f));
+            accelerationSource.SetPitch(Mathf.Lerp(accelerationSource.GetPitch(), 0.65f + Mathf.Clamp(Mathf.Abs(speed / 160f) * (1 + (Mathf.Abs((float)gear) / 5)), 0f, 1f),
+                Time.deltaTime * 5f));
+            if (!grounded) {
+                accelerationSource.SetPitch(Mathf.Lerp(accelerationSource.GetPitch(), 1.5f, Time.deltaTime * 8f));
+            }
+            
+            decelerationSource.SetPitch(Mathf.Lerp(decelerationSource.GetPitch(), 0.5f + speed / 40f, Time.deltaTime * 2f));
+        }
     }
 
     void Movement() {
