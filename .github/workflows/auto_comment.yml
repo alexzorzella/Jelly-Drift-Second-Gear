@@ -2,7 +2,7 @@ name: Autogif
 
 on:
   issues:
-    types: [opened]
+    types: [closed]
 
 jobs:
   comment:
@@ -19,7 +19,7 @@ jobs:
             const username = context.payload.issue.user.login;
             
             const comment = [
-              `Hey @${username}!`,
+              `Hooray! Congratulations, @${username}!`,
               ``,
               `<img src="https://media.tenor.com/tVHlGqIC3-IAAAAM/smiling-elizabeth-bennet.gif" height="200" width="200" />`].join('\n');
 
