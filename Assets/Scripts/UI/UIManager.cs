@@ -1,14 +1,64 @@
-﻿using TMPro;
+﻿using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour {
     public static UIManager Instance;
     public TextMeshProUGUI splitText;
 
+    public RectTransform spedometerIndicator;
+    public TextMeshProUGUI spedometerText;
+    public TextMeshProUGUI gearText;
+
+    Car car;
+    
     void Awake() {
         Instance = this;
 
         splitText.text = "";
+    }
+
+    public void SetCar(Car car) {
+        this.car = car;
+    }
+    
+    void Update() {
+        if (car != null) {
+            UpdateSpedometer(car.GetDisplaySpeedValue(), (int)car.GetGear());
+        }
+    }
+
+    const float maxSpeed = 210;
+
+    float targetSpedometerRotation = 0;
+    
+    static readonly List<Color> gearColors = new() {
+        new Color(0, 0, 1, 0.8F),
+        new Color(0, 0, 1, 0.8F),
+        new Color(0.9F, 0.58F, 0.01F, 0.8F),
+        new Color(0.9F, 0.58F, 0.01F, 0.8F),
+        new Color(1, 0, 0, 0.8F),
+        new Color(0.12F, 0.8F, 0.25F, 0.8F)
+    };
+    
+    void UpdateSpedometer(float currentSpeed, int currentGear) {
+        Color gearColor = gearColors[currentGear];
+        gearText.color = gearColor;
+            
+        gearText.text = currentGear <= 4 ? (currentGear + 1).ToString() : "R";
+        
+        spedometerText.text = $"{currentSpeed.ToString("0")} km/h";
+        
+        float speedPercentage = (currentSpeed / maxSpeed);
+        float rotation = speedPercentage * -360F;
+        targetSpedometerRotation = rotation;
+        spedometerIndicator.localEulerAngles = 
+            new Vector3(0, 0, 
+                Mathf.LerpAngle(
+                    spedometerIndicator.localEulerAngles.z,
+                    targetSpedometerRotation, 
+                    Time.deltaTime * 15F));
     }
 
     public void DisplaySplit() {

@@ -43,10 +43,10 @@ public class PlayerInput : MonoBehaviour {
 
     void ReverseKey(InputAction.CallbackContext context) {
         if (context.action.IsPressed()) {
-            car.SetGear(5);
+            car.SetGear(CarGear.REVERSE);
             car.throttle = 1;
         } else {
-            car.SetGear(2);
+            car.ExitReverse();
             car.throttle = 0;
         }
     }
@@ -93,12 +93,12 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
-    void First(InputAction.CallbackContext context) { car.SetGear(0); }
-    void Second(InputAction.CallbackContext context) { car.SetGear(1); }
-    void Third(InputAction.CallbackContext context) { car.SetGear(2); }
-    void Fourth(InputAction.CallbackContext context) { car.SetGear(3); }
-    void Fifth(InputAction.CallbackContext context) { car.SetGear(4); }
-    void Reverse(InputAction.CallbackContext context) { car.SetGear(5); }
+    void First(InputAction.CallbackContext context) { car.SetGear(CarGear.FIRST); }
+    void Second(InputAction.CallbackContext context) { car.SetGear(CarGear.SECOND); }
+    void Third(InputAction.CallbackContext context) { car.SetGear(CarGear.THIRD); }
+    void Fourth(InputAction.CallbackContext context) { car.SetGear(CarGear.FOURTH); }
+    void Fifth(InputAction.CallbackContext context) { car.SetGear(CarGear.FIFTH); }
+    void Reverse(InputAction.CallbackContext context) { car.SetGear(CarGear.REVERSE); }
 
     void OnEnable() {
         if (pxn != null) {
