@@ -3,7 +3,7 @@
 public class Race : MonoBehaviour {
     GameController gameController;
     GameObject enemyCarObject { get; set; }
-
+    
     void Awake() {
         if (GameState.i.gameMode != GameMode.RACE) {
             Destroy(this);
