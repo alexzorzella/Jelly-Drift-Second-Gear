@@ -1,0 +1,31 @@
+name: Autogif
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Comment on new issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = context.issue.number;
+            const username = context.payload.issue.user.login;
+            
+            const comment = [
+              `Hey @${username}!,
+              ``,
+              `<img src="https://media.tenor.com/tVHlGqIC3-IAAAAM/smiling-elizabeth-bennet.gif" height="200" width="200" />`].join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: comment
+            });
