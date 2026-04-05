@@ -44,7 +44,6 @@ public class UIManager : MonoBehaviour {
     
     void UpdateSpedometer(float currentSpeed, int currentGear) {
         Color gearColor = gearColors[currentGear];
-        gearColor = new Color(gearColor.r, gearColor.g, gearColor.b, 0.8F);
         gearText.color = gearColor;
             
         gearText.text = currentGear <= 4 ? (currentGear + 1).ToString() : "R";
