@@ -68,6 +68,7 @@ public class Car : MonoBehaviour, StartListener {
 
         if (!isCpu) {
             gameObject.AddComponent<PlayerInput>().Initialize(this);
+            UIManager.Instance.SetCar(this);
         }
         
         // Materials are set here
@@ -322,5 +323,13 @@ public class Car : MonoBehaviour, StartListener {
 
     public void StopHorn() {
         horn.Stop();
+    }
+
+    public int GetGear() {
+        return gear;
+    }
+
+    public float GetDisplaySpeedValue() {
+        return Mathf.Abs(throttle) + Mathf.Abs(speed) * 1.2F;
     }
 }

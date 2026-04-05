@@ -1,14 +1,47 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour {
     public static UIManager Instance;
     public TextMeshProUGUI splitText;
 
+    public RectTransform spedometerIndicator;
+    public TextMeshProUGUI spedometerText;
+
+    Car car;
+    
     void Awake() {
         Instance = this;
 
         splitText.text = "";
+    }
+
+    public void SetCar(Car car) {
+        this.car = car;
+    }
+    
+    void Update() {
+        if (car != null) {
+            UpdateSpedometer(car.GetDisplaySpeedValue(), car.GetGear());
+        }
+    }
+
+    const float maxSpeed = 210;
+
+    float targetSpedometerRotation = 0;
+    
+    void UpdateSpedometer(float currentSpeed, int currentGear) {
+        spedometerText.text = $"{currentSpeed.ToString("0")} km/h";
+        float speedPercentage = (currentSpeed / maxSpeed);
+        float rotation = speedPercentage * -360F;
+        targetSpedometerRotation = rotation;
+        spedometerIndicator.localEulerAngles = 
+            new Vector3(0, 0, 
+                Mathf.LerpAngle(
+                    spedometerIndicator.localEulerAngles.z,
+                    targetSpedometerRotation, 
+                    Time.deltaTime * 15F * Mathf.Clamp(speedPercentage + 0.2F, 0, 1)));
     }
 
     public void DisplaySplit() {
