@@ -1,0 +1,5 @@
+# mark Unity serialized files as non-language content
+*.asset linguist-generated
+*.unity linguist-generated
+*.prefab linguist-generated
+*.mat linguist-generated
