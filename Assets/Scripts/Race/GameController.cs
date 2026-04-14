@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -55,6 +54,14 @@ public class GameController : MonoBehaviour {
 
     void Update() {
         PlayerInput();
+        
+        #if UNITY_EDITOR
+        if (Keyboard.current.leftCtrlKey.isPressed) {
+            if (Keyboard.current.f8Key.wasPressedThisFrame) {
+                FinishRace(false, currentCar.GetComponent<Transform>());
+            }
+        }
+        #endif
     }
 
     void StartRace() {
