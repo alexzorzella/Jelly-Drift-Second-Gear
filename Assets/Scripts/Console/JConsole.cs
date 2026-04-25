@@ -359,7 +359,7 @@ public class JConsole : MonoBehaviour {
     static bool ConsoleKeybindTriggered() {
         Keyboard currentKeyboard = Keyboard.current;
         if (currentKeyboard.slashKey.wasPressedThisFrame) {
-            if (currentKeyboard.rightCtrlKey.isPressed && currentKeyboard.leftShiftKey.isPressed && currentKeyboard.rightShiftKey.isPressed) {
+            if (currentKeyboard.leftCtrlKey.isPressed && currentKeyboard.leftShiftKey.isPressed && currentKeyboard.rightShiftKey.isPressed) {
                 return true;
             }
         }
