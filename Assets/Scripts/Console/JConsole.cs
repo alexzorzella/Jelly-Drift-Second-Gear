@@ -316,7 +316,7 @@ public class JConsole : MonoBehaviour {
             scrollViewport.sizeDelta = textSize;
         }
 
-        if (SlashKey() && !visible) {
+        if (ConsoleKeybindTriggered() && !visible) {
             OpenConsole();
         } else if (Keyboard.current.leftCtrlKey.isPressed && Keyboard.current.tabKey.wasPressedThisFrame) {
             CloseConsole();
@@ -356,8 +356,15 @@ public class JConsole : MonoBehaviour {
         return i.visible;
     }
 
-    static bool SlashKey() {
-        return Keyboard.current.slashKey.wasPressedThisFrame;
+    static bool ConsoleKeybindTriggered() {
+        Keyboard currentKeyboard = Keyboard.current;
+        if (currentKeyboard.slashKey.wasPressedThisFrame) {
+            if (currentKeyboard.rightCtrlKey.isPressed && currentKeyboard.leftShiftKey.isPressed && currentKeyboard.rightShiftKey.isPressed) {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
     static bool EscapeKey() {
