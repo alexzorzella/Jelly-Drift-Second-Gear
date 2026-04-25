@@ -97,7 +97,6 @@ public class JConsole : MonoBehaviour {
         commandList.Add(new HcLoadScene());
         commandList.Add(new HcToggleFullscreen());
         commandList.Add(new HcSuppressMessages());
-        commandList.Add(new HcTestDialogue());
         commandList.Add(new HcTimeScale());
         commandList.Add(new HcCloseConsole());
         commandList.Add(new HcForceQuit());
