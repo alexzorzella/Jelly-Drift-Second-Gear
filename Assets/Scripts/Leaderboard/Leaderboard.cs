@@ -190,20 +190,6 @@ public class Leaderboard : MonoBehaviour {
         Refresh();
     }
 
-    public void ConcatName(string newName) {
-        if (newName.Length > usernameCharLimit) {
-            newName = newName.Substring(0, usernameCharLimit);
-            usernameInput.text = newName;
-        }
-    }
-    
-    public void ConcatMessage(string newMessage) {
-        if (newMessage.Length > messageCharLimit) {
-            newMessage = newMessage.Substring(0, messageCharLimit);
-            messageInput.text = newMessage;
-        }
-    }
-
     public void UpdateCharCounterText(string message) {
         int charCount = message.Length;
         charCounterText.text = $"{charCount}/{messageCharLimit}";
