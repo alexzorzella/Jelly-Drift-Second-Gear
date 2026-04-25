@@ -30,7 +30,13 @@ public class RecordUtil : MonoBehaviour {
         stream.Close();
     }
 
-    const int plainTextLength = 4 + 4 + 16 + 255 + 8 + 4;
+    const int usernameMaxLength = 16;
+    const int messageMaxLength = 255;
+    const int phoneNumberMaxLength = 10;
+    const int gameVersionMaxLength = 16;
+    
+    const int plainTextLength = 4 + 4 + usernameMaxLength + messageMaxLength + 8 + 4 + phoneNumberMaxLength + 4 + gameVersionMaxLength;
+    
     const int blockSize = 16;
     const int paddedLength = ((plainTextLength + blockSize - 1) / blockSize) * blockSize;
     const int chunkSize = 16 + paddedLength + 32;
@@ -65,10 +71,13 @@ public class RecordUtil : MonoBehaviour {
         
         bw.Write(record.GetStageId());
         bw.Write(record.GetCarId());
-        bw.Write(record.GetUsername().PadRight(16, '\0').ToCharArray());
-        bw.Write(record.GetMessage().PadRight(255, '\0').ToCharArray());
+        bw.Write(record.GetUsername().PadRight(usernameMaxLength, '\0').ToCharArray());
+        bw.Write(record.GetMessage().PadRight(messageMaxLength, '\0').ToCharArray());
         bw.Write(record.GetDate());
         bw.Write(record.GetTimeMs());
+        bw.Write(record.GetPhoneNumber().PadRight(phoneNumberMaxLength, '\0').ToCharArray());
+        bw.Write(record.GetCarVisualsId());
+        bw.Write(record.GameVersion());
 
         return ms.ToArray();
     }
@@ -130,13 +139,17 @@ public class RecordUtil : MonoBehaviour {
         int stageId = br.ReadInt32();
         int carId = br.ReadInt32();
         
-        string username = new string(br.ReadChars(16)).TrimEnd('\0');
-        string message = new string(br.ReadChars(255)).TrimEnd('\0');
+        string username = new string(br.ReadChars(usernameMaxLength)).TrimEnd('\0');
+        string message = new string(br.ReadChars(messageMaxLength)).TrimEnd('\0');
         
         long date = br.ReadInt64();
         int time = br.ReadInt32();
 
-        Record result = new(stageId, carId, username, message, date, time);
+        string phoneNumber = new string(br.ReadChars(phoneNumberMaxLength)).TrimEnd('\0');
+        int carVisualsId = br.ReadInt32();
+        string gameVersion = new string(br.ReadChars(gameVersionMaxLength)).TrimEnd('\0');
+
+        Record result = new(stageId, carId, username, message, date, time, phoneNumber, carVisualsId, gameVersion);
 
         return result;
     }
