@@ -33,7 +33,7 @@ public class RecordUtil : MonoBehaviour {
     const int usernameMaxLength = 16;
     const int messageMaxLength = 255;
     const int phoneNumberMaxLength = 10;
-    const int gameVersionMaxLength = 16;
+    const int gameVersionMaxLength = 128;
     
     const int plainTextLength = 4 + 4 + usernameMaxLength + messageMaxLength + 8 + 4 + phoneNumberMaxLength + 4 + gameVersionMaxLength;
     
@@ -77,7 +77,7 @@ public class RecordUtil : MonoBehaviour {
         bw.Write(record.GetTimeMs());
         bw.Write(record.GetPhoneNumber().PadRight(phoneNumberMaxLength, '\0').ToCharArray());
         bw.Write(record.GetCarVisualsId());
-        bw.Write(record.GameVersion());
+        bw.Write(record.GameVersion().PadRight(gameVersionMaxLength, '\0').ToCharArray());
 
         return ms.ToArray();
     }
