@@ -10,6 +10,6 @@ public class MenuUI : MonoBehaviour {
     }
 
     public void Quit() {
-        Application.Quit(1);
+        GnaTransition.Quit();
     }
 }

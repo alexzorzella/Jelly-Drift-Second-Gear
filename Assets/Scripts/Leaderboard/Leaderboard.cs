@@ -219,6 +219,7 @@ public class Leaderboard : MonoBehaviour {
         awaitingSubmission = true;
         usernameInput.gameObject.SetActive(true);
         messageInput.gameObject.SetActive(true);
+        phoneNumInput.gameObject.SetActive(true);
         submitButton.SetActive(true);
     }
     
@@ -226,6 +227,7 @@ public class Leaderboard : MonoBehaviour {
         awaitingSubmission = false;
         usernameInput.gameObject.SetActive(false);
         messageInput.gameObject.SetActive(false);
+        phoneNumInput.gameObject.SetActive(false);
         submitButton.SetActive(false);
     }
     
