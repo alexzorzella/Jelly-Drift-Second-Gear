@@ -10,6 +10,11 @@ public class HcRecordUtil : HCommand {
     }
 
     public string CommandFunction(params string[] parameters) {
+        if (parameters.Length > 2 && parameters[1] == "write") {
+            RecordUtil.Write();
+            return $"Wrote {RecordUtil.records.Count} record(s) to {RecordUtil.path}";
+        }
+        
         RecordUtil.Read();
 
         List<Record> records = RecordUtil.records;
@@ -33,16 +38,10 @@ public class HcRecordUtil : HCommand {
                     return "Invalid record index";
                 }
                 
-                Record removeRecord = records[recordToDeleteIndex];
-                records.RemoveAt(recordToDeleteIndex);
+                Record removeRecord = RecordUtil.records[recordToDeleteIndex];
+                RecordUtil.records.Remove(removeRecord);
     
                 return $"Removed the following record: {removeRecord}. You must write back manually.";
-            }
-            
-            if (parameters[1] == "write") {
-                RecordUtil.Write();
-
-                return $"Wrote {records.Count} record(s) to {RecordUtil.path}";
             }
 
             if (parameters[1] == "list") {
