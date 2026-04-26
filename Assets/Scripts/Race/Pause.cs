@@ -58,7 +58,7 @@ public class Pause : MonoBehaviour {
 
     public void Quit() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu");
+        GnaTransition.LoadScene("Menu");
         paused = false;
     }
 }

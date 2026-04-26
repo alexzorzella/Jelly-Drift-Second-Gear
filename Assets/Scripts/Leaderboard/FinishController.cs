@@ -45,7 +45,7 @@ public class FinishController : MonoBehaviour {
             return;
         }
         
-        SceneManager.LoadScene("Menu");
+        GnaTransition.LoadScene("Menu");
         Time.timeScale = 1f;
     }
 }

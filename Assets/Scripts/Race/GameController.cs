@@ -99,7 +99,7 @@ public class GameController : MonoBehaviour {
     }
     
     public void RestartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GnaTransition.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Recover() {

@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class Leaderboard : MonoBehaviour {
     public VerticalLayoutGroup verticalLayoutGroup;
@@ -15,6 +14,7 @@ public class Leaderboard : MonoBehaviour {
     
     public TMP_InputField usernameInput;
     public TMP_InputField messageInput;
+    public TMP_InputField phoneNumInput;
     public TextMeshProUGUI charCounterText;
     public GameObject submitButton;
     
@@ -151,7 +151,8 @@ public class Leaderboard : MonoBehaviour {
         
         string username = usernameInput.text;
         string message = messageInput.text;
-
+        string phoneNumber = phoneNumInput.text;
+        
         if (username == "") {
             DisplaySystemMessage("You haven't entered a display name.");
             return;
@@ -175,14 +176,10 @@ public class Leaderboard : MonoBehaviour {
         
         int stageId = MapManager.i.GetSelectedMap().GetId();
         int carId = CarCatalogue.GetSelectedCarData().GetId();
+
+        string gameVersion = PlayerSettings.bundleVersion;
         
-        Record record = new Record(
-            stageId,
-            carId,
-            username, 
-            message, 
-            DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 
-            timeMs);
+        Record record = new Record(stageId, carId, username, message, DateTimeOffset.UtcNow.ToUnixTimeSeconds(), timeMs, phoneNumber,  0, gameVersion);
         
         timeMs = -1;
         
@@ -191,20 +188,6 @@ public class Leaderboard : MonoBehaviour {
         RecordUtil.records.Add(record);
         RecordUtil.Write();
         Refresh();
-    }
-
-    public void ConcatName(string newName) {
-        if (newName.Length > usernameCharLimit) {
-            newName = newName.Substring(0, usernameCharLimit);
-            usernameInput.text = newName;
-        }
-    }
-    
-    public void ConcatMessage(string newMessage) {
-        if (newMessage.Length > messageCharLimit) {
-            newMessage = newMessage.Substring(0, messageCharLimit);
-            messageInput.text = newMessage;
-        }
     }
 
     public void UpdateCharCounterText(string message) {
@@ -222,6 +205,7 @@ public class Leaderboard : MonoBehaviour {
         awaitingSubmission = true;
         usernameInput.gameObject.SetActive(true);
         messageInput.gameObject.SetActive(true);
+        phoneNumInput.gameObject.SetActive(true);
         submitButton.SetActive(true);
     }
     
@@ -229,6 +213,7 @@ public class Leaderboard : MonoBehaviour {
         awaitingSubmission = false;
         usernameInput.gameObject.SetActive(false);
         messageInput.gameObject.SetActive(false);
+        phoneNumInput.gameObject.SetActive(false);
         submitButton.SetActive(false);
     }
     

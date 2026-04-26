@@ -22,6 +22,6 @@ public class GameState {
     public int skin { get; set; } = 1;
 
     public void LoadMap() {
-        SceneManager.LoadScene(MapManager.i.GetSelectedMap().GetNameFormatted());
+        GnaTransition.LoadScene(MapManager.i.GetSelectedMap().GetNameFormatted());
     }
 }
