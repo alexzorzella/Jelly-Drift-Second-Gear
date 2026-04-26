@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
-public class HcListRecords : HCommand {
+public class HcRecordUtil : HCommand {
     public List<string> AutocompleteOptions() {
         return new List<string>() {
-            "",
+            "list,
             "delete",
             "write"
         };
