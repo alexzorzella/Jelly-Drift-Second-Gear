@@ -15,7 +15,7 @@ public class RecordUtil : MonoBehaviour {
         0x0F, 0x09, 0xDD, 0x34
     };
 
-    static readonly string path = Application.persistentDataPath + "/leaderboard.weaver";
+    public static readonly string path = Application.persistentDataPath + "/leaderboard.weaver";
 
     public static readonly List<Record> records = new();
     
