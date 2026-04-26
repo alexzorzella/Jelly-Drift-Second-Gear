@@ -20,8 +20,12 @@ public class RecordUtil : MonoBehaviour {
     public static readonly List<Record> records = new();
     
     public static void Write() {
+        if (File.Exists(path)) {
+            File.Delete(path);
+        }
+        
         FileStream stream = new FileStream(path, FileMode.Create);
-
+        
         foreach (var record in records) {
             byte[] encrypted = Encrypt(record);
             stream.Write(encrypted);

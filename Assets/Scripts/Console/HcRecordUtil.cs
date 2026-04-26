@@ -10,8 +10,9 @@ public class HcRecordUtil : HCommand {
     }
 
     public string CommandFunction(params string[] parameters) {
-        if (parameters.Length > 2 && parameters[1] == "write") {
+        if (parameters.Length > 1 && parameters[1] == "write") {
             RecordUtil.Write();
+            RecordUtil.Read();
             return $"Wrote {RecordUtil.records.Count} record(s) to {RecordUtil.path}";
         }
         
@@ -28,6 +29,8 @@ public class HcRecordUtil : HCommand {
                 JConsole.i.WriteLine($"[{index}] {record}");
                 index++;
             }
+
+            return $"Listed {records.Count} record(s)";
         } else if(parameters.Length > 1){
             if (parameters.Length > 2 && parameters[1] == "delete") {
                 int recordToDeleteIndex = -1;
@@ -50,10 +53,12 @@ public class HcRecordUtil : HCommand {
                     JConsole.i.WriteLine($"[{index}] {record}");
                     index++;
                 }
+
+                return $"Listed {records.Count} record(s)";
             }
         }
         
-        return "";
+        return "Something went wrong...";
     }
 
     public string CommandHelp() {
