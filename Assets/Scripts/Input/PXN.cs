@@ -276,7 +276,7 @@ public partial class @PXN: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a6711c81-44db-45fc-8be5-f887c4fb0247"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/b"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
