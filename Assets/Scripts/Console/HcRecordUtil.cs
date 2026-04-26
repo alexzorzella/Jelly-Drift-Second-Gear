@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public class HcRecordUtil : HCommand {
     public List<string> AutocompleteOptions() {
         return new List<string>() {
-            "list,
+            "list",
             "delete",
             "write"
         };
