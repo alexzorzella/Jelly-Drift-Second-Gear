@@ -1418,8 +1418,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -138.1864, y: -101.259796}
-  m_SizeDelta: {x: 246.8007, y: 64.0662}
+  m_AnchoredPosition: {x: -199.04663, y: -101.259796}
+  m_SizeDelta: {x: 368.5213, y: 64.0662}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1383840420297443609
 CanvasRenderer:
@@ -1507,17 +1507,17 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 2
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 2
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 2
+  m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 10
+  m_CharacterLimit: 24
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -4820,7 +4820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -604.60004, y: -101.259796}
+  m_AnchoredPosition: {x: -724, y: -101.259796}
   m_SizeDelta: {x: 667.4232, y: 64.06619}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7882089880372388228
@@ -8059,7 +8059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1114.3, y: -101.25}
+  m_AnchoredPosition: {x: -1233.7001, y: -101.25}
   m_SizeDelta: {x: 340.4762, y: 64.06619}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7835070070251593234
