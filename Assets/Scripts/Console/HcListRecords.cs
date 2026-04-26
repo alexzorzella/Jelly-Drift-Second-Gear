@@ -16,6 +16,7 @@ public class HcListRecords : HCommand {
         int index = 0;
         foreach(var record in records) {
             JConsole.i.WriteLine($"[{index}] {record}");
+            index++;
         }
         
         return "";
