@@ -74,4 +74,15 @@ public class Record {
     public int GetTimeMs() {
         return time;
     }
+
+    public override string ToString() {
+        return $"Username: '{username}', " +
+               $"Message: '{message}', " +
+               $"Date: {GetFormattedDate()}, " +
+               $"Time: {TimeEntry.FormatMs(time)}, " +
+               $"Stage: {MapManager.GetStageById(stageId).GetName()}, " +
+               $"Car: {CarCatalogue.GetCarById(carId).GetCarName()} (visual {carVisualsId}), " +
+               $"Phone: {phoneNumber}, " +
+               $"Game Version: {gameVersion}";
+    }
 }
