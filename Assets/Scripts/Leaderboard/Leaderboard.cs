@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -142,7 +142,7 @@ public class Leaderboard : MonoBehaviour {
         
         entryParent.sizeDelta = new Vector2(entryParent.sizeDelta.x, height);
     }
-
+    
     public void SubmitNewTime() {
         if (timeMs <= 0) {
             DisplaySystemMessage("Your time is impossible.");
@@ -177,7 +177,7 @@ public class Leaderboard : MonoBehaviour {
         int stageId = MapManager.i.GetSelectedMap().GetId();
         int carId = CarCatalogue.GetSelectedCarData().GetId();
 
-        string gameVersion = PlayerSettings.bundleVersion;
+        string gameVersion = VersionTextUtil.CurrentPrintableVersionNoSha();
         
         Record record = new Record(stageId, carId, username, message, DateTimeOffset.UtcNow.ToUnixTimeSeconds(), timeMs, phoneNumber,  0, gameVersion);
         
